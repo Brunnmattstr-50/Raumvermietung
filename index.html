@@ -3,198 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saal mieten · Brunnmattstrasse 50 · Bern · 60 m² Holzparkett</title>
-<meta name="description" content="Saal zur Wochenmiete in Bern. 60 m² Holzparkett, eigenes WC, Klavier, zentrale Lage. Für Tanz, Musik, Bewegung, Kurse.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Saal mieten · Brunnmattstrasse 50 · Bern · 60 m² für Tanz, Musik, Gesang</title>
+<meta name="description" content="Suchst du einen Raum für deine Tanz-, Musik- oder Gesangsstunden in Bern? 60 m² Saal mit Holzparkett und Klavier zur Wochenmiete.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #f5f0e8; --warm-white: #faf8f4; --oak: #c4935a;
-  --dark-oak: #7a5c38; --charcoal: #2c2c2c; --muted: #8a8178;
-  --light-muted: #d4cfc8; --green: #4a6b4c;
+  --ink: #1a1a2e;
+  --ink-soft: #2d2d44;
+  --paper: #fefcf7;
+  --paper-blush: #fff0f3;
+  --paper-cream: #fff8e8;
+  --coral: #ff5a5f;
+  --coral-dark: #e63946;
+  --coral-soft: #ffd6da;
+  --gold: #f4a261;
+  --gold-soft: #fce4cf;
+  --mint: #2a9d8f;
+  --muted: #6b6b80;
+  --line: #ebe7dc;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { font-family:'Jost',sans-serif; background:var(--warm-white); color:var(--charcoal); font-weight:300; }
+body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); font-weight:400; }
 
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(250,248,244,0.96); backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--light-muted);
-  padding:16px 60px;
+  background:rgba(254,252,247,0.94); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding:14px 56px;
   display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
 }
-.nav-logo { font-family:'Playfair Display',serif; font-size:18px; }
-.nav-logo span { color:var(--oak); }
+.nav-logo { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; letter-spacing:-0.5px; }
+.nav-logo span { color:var(--coral); }
 .nav-links { display:flex; gap:32px; justify-content:flex-end; }
-.nav-links a { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
-.nav-links a:hover, .nav-links a.cta:hover { color:var(--oak); }
-.nav-links .cta { background:var(--charcoal); color:var(--cream)!important; padding:10px 24px; }
-#lang-btn { background:none; border:1px solid var(--light-muted); padding:10px 24px; font-size:12px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; font-family:'Jost',sans-serif; color:var(--charcoal); transition:all .2s; }
-#lang-btn:hover { border-color:var(--oak); color:var(--oak); }
+.nav-links a { font-size:13px; font-weight:500; color:var(--ink); text-decoration:none; transition:color .2s; }
+.nav-links a:hover, .nav-links a.cta:hover { color:var(--coral); }
+.nav-links .cta { background:var(--coral); color:white!important; padding:9px 20px; border-radius:999px; font-weight:600; }
+.nav-links .cta:hover { background:var(--coral-dark); color:white!important; }
+#lang-btn { background:none; border:1.5px solid var(--line); padding:8px 16px; font-size:12px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; color:var(--ink); border-radius:999px; transition:all .2s; }
+#lang-btn:hover { border-color:var(--coral); color:var(--coral); }
 
+/* HERO */
 .hero {
-  height:100vh; min-height:720px; position:relative; overflow:hidden;
-  background:#1f1c18;
+  min-height:100vh; position:relative; overflow:hidden;
+  background:var(--ink);
   display:flex; align-items:center; justify-content:center;
 }
 .hero-bg-blur {
   position:absolute; inset:0;
   background-image:url("saal_eingang.jpg");
   background-size:cover; background-position:center;
-  filter:blur(28px) brightness(0.4) saturate(0.8);
+  filter:blur(30px) brightness(0.35) saturate(1.1);
   transform:scale(1.15);
+}
+.hero::before {
+  content:""; position:absolute; inset:0; z-index:1;
+  background:radial-gradient(circle at 30% 50%, rgba(255,90,95,0.18) 0%, transparent 60%),
+             radial-gradient(circle at 75% 80%, rgba(244,162,97,0.15) 0%, transparent 60%);
 }
 .hero-stage {
   position:relative; z-index:2;
-  display:grid; grid-template-columns:1fr auto 1fr; gap:60px; align-items:center;
-  width:100%; max-width:1400px; padding:120px 60px 60px;
+  display:grid; grid-template-columns:1.1fr auto 1fr; gap:50px; align-items:center;
+  width:100%; max-width:1400px; padding:120px 56px 80px;
 }
-.hero-text-left { text-align:right; padding-right:20px; }
+.hero-text-left { padding-right:10px; }
 .hero-text-left .eyebrow {
-  font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#e8c99a;
-  margin-bottom:18px; font-weight:500;
+  display:inline-block;
+  font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--coral); margin-bottom:22px;
+  background:rgba(255,90,95,0.15); padding:6px 14px; border-radius:999px;
 }
 .hero-text-left h1 {
-  font-family:'Playfair Display',serif; font-size:clamp(42px,5vw,68px);
-  color:white; font-weight:400; line-height:1.05; margin-bottom:14px;
+  font-family:'Space Grotesk',sans-serif; font-size:clamp(34px,4.2vw,56px);
+  color:white; font-weight:700; line-height:1.05; margin-bottom:18px; letter-spacing:-1px;
 }
-.hero-text-left h1 em { font-style:italic; color:#e8c99a; }
-.hero-text-left .sub { font-size:15px; color:rgba(255,255,255,0.78); line-height:1.7; max-width:380px; margin-left:auto; }
+.hero-text-left h1 .accent { color:var(--coral); }
+.hero-text-left h1 .underline { background:linear-gradient(transparent 70%, rgba(244,162,97,0.55) 70%); }
+.hero-text-left .sub { font-size:17px; color:rgba(255,255,255,0.82); line-height:1.65; max-width:480px; margin-bottom:30px; }
 
 .door-frame {
-  position:relative; width:min(48vh, 420px); aspect-ratio:3/4;
+  position:relative; width:min(46vh, 380px); aspect-ratio:3/4;
   cursor:pointer;
   transition:transform .8s cubic-bezier(.2,.8,.2,1);
-  filter:drop-shadow(0 30px 80px rgba(0,0,0,0.55));
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,0.55));
+  border-radius:8px; overflow:hidden;
 }
 .door-frame img { width:100%; height:100%; object-fit:cover; display:block; }
 .door-frame::after {
   content:""; position:absolute; inset:0;
-  border:1px solid rgba(255,255,255,0.18); pointer-events:none;
+  border:2px solid rgba(255,90,95,0.35); border-radius:8px;
+  pointer-events:none;
 }
-.door-frame:hover { transform:translateY(-6px) scale(1.015); }
+.door-frame:hover { transform:translateY(-8px) scale(1.02); }
 
-.hero-text-right { padding-left:20px; }
-.hero-pills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px; }
-.pill { background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.32); color:white; padding:7px 16px; font-size:11px; letter-spacing:1px; backdrop-filter:blur(4px); }
-.pill.accent { background:var(--oak); border-color:var(--oak); }
-.hero-text-right .stats { display:flex; gap:28px; margin-bottom:32px; }
-.hero-text-right .stat .lbl { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--oak); margin-bottom:5px; }
-.hero-text-right .stat .val { font-family:'Playfair Display',serif; font-size:30px; color:white; line-height:1; }
-.hero-text-right .stat .un { font-size:12px; color:rgba(255,255,255,0.6); margin-top:3px; }
-.hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
-.btn-w { background:white; color:var(--charcoal); padding:14px 30px; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; font-weight:500; transition:background .3s; }
-.btn-w:hover { background:var(--cream); }
-.btn-o { border:1px solid rgba(255,255,255,.5); color:white; padding:14px 30px; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:border-color .3s; }
-.btn-o:hover { border-color:white; }
+.hero-text-right { padding-left:10px; }
+.hero-pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; }
+.pill { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:white; padding:7px 14px; font-size:12px; font-weight:500; border-radius:999px; backdrop-filter:blur(4px); }
+.pill.accent { background:var(--coral); border-color:var(--coral); color:white; }
+.pill.accent2 { background:var(--gold); border-color:var(--gold); color:var(--ink); font-weight:600; }
+.hero-text-right .stats { display:flex; gap:24px; margin-bottom:30px; }
+.hero-text-right .stat .lbl { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:5px; }
+.hero-text-right .stat .val { font-family:'Space Grotesk',sans-serif; font-size:30px; color:white; line-height:1; font-weight:700; }
+.hero-text-right .stat .un { font-size:12px; color:rgba(255,255,255,0.6); margin-top:4px; }
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+.btn-pri { background:var(--coral); color:white; padding:14px 28px; font-size:14px; font-weight:600; text-decoration:none; border-radius:999px; transition:all .25s; box-shadow:0 6px 20px rgba(255,90,95,0.4); }
+.btn-pri:hover { background:var(--coral-dark); transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,90,95,0.5); }
+.btn-sec { border:1.5px solid rgba(255,255,255,0.4); color:white; padding:14px 28px; font-size:14px; font-weight:500; text-decoration:none; border-radius:999px; transition:all .25s; }
+.btn-sec:hover { border-color:white; background:rgba(255,255,255,0.1); }
 
 .scroll-hint {
-  position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
-  z-index:3; color:rgba(255,255,255,0.7); font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+  z-index:3; color:rgba(255,255,255,0.6); font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
   display:flex; flex-direction:column; align-items:center; gap:8px;
   animation:bounce 2.4s infinite;
 }
-.scroll-hint::after { content:""; width:1px; height:30px; background:rgba(255,255,255,0.5); }
+.scroll-hint::after { content:""; width:1px; height:26px; background:rgba(255,255,255,0.5); }
 @keyframes bounce { 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,8px);} }
 
 section { padding:90px 80px; }
-.section-label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--oak); margin-bottom:16px; }
-h2.stitle { font-family:'Playfair Display',serif; font-size:clamp(30px,3.5vw,46px); font-weight:400; margin-bottom:40px; }
-.intro-p { font-size:16px; line-height:1.85; color:#555; max-width:780px; margin-bottom:14px; }
+.section-label { display:inline-block; font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--coral); margin-bottom:18px; background:var(--coral-soft); padding:5px 12px; border-radius:999px; }
+h2.stitle { font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,3.2vw,42px); font-weight:700; margin-bottom:32px; line-height:1.1; letter-spacing:-0.8px; color:var(--ink); }
+.intro-p { font-size:17px; line-height:1.75; color:var(--ink-soft); max-width:780px; margin-bottom:14px; font-weight:400; }
 
-.gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px; gap:8px; }
-.gitem { position:relative; cursor:pointer; overflow:hidden; }
+.gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px; gap:10px; }
+.gitem { position:relative; cursor:pointer; overflow:hidden; border-radius:10px; }
 .gitem img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s, opacity .3s; }
-.gitem:hover img { transform:scale(1.06); opacity:0.88; }
-.gitem .cap { position:absolute; bottom:0; left:0; right:0; padding:10px 12px; background:linear-gradient(transparent,rgba(0,0,0,.6)); color:white; font-size:10px; letter-spacing:2px; text-transform:uppercase; opacity:0; transition:opacity .3s; }
-.gitem:hover .cap { opacity:1; }
+.gitem:hover img { transform:scale(1.06); opacity:0.92; }
+.gitem .cap { position:absolute; bottom:10px; left:12px; right:12px; background:rgba(26,26,46,0.85); color:white; font-size:11px; font-weight:600; padding:6px 12px; border-radius:999px; opacity:0; transform:translateY(8px); transition:all .3s; display:inline-block; width:fit-content; }
+.gitem:hover .cap { opacity:1; transform:translateY(0); }
 .gitem.span3 { grid-column:span 3; }
 .gitem.row2 { grid-row:span 2; }
 
 .lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.94); z-index:1000; align-items:center; justify-content:center; }
 .lb-overlay.active { display:flex; }
-.lb-overlay img { max-width:92vw; max-height:92vh; object-fit:contain; }
-.lb-close { position:absolute; top:24px; right:32px; color:white; font-size:36px; cursor:pointer; line-height:1; opacity:0.7; }
+.lb-overlay img { max-width:92vw; max-height:92vh; object-fit:contain; border-radius:8px; }
+.lb-close { position:absolute; top:24px; right:32px; color:white; font-size:32px; cursor:pointer; line-height:1; opacity:0.7; }
 .lb-close:hover { opacity:1; }
-.lb-prev, .lb-next { position:absolute; top:50%; transform:translateY(-50%); color:white; font-size:36px; cursor:pointer; opacity:0.6; padding:16px; }
+.lb-prev, .lb-next { position:absolute; top:50%; transform:translateY(-50%); color:white; font-size:32px; cursor:pointer; opacity:0.6; padding:16px; }
 .lb-prev:hover, .lb-next:hover { opacity:1; }
 .lb-prev { left:16px; } .lb-next { right:16px; }
 
-.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.fcards { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.fcard { background:white; padding:24px 22px; border-left:3px solid var(--oak); }
-.fcard .icon { font-size:22px; margin-bottom:8px; }
-.fcard .ft { font-size:12px; font-weight:500; letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; }
-.fcard .fd { font-size:13px; color:var(--muted); line-height:1.6; }
-.flist { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px; }
-.flist li { font-size:13px; display:flex; align-items:center; gap:10px; }
-.flist li::before { content:"—"; color:var(--oak); flex-shrink:0; }
+.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+.fcards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.fcard { background:white; padding:24px 22px; border-radius:14px; box-shadow:0 4px 16px rgba(26,26,46,0.06); transition:transform .25s, box-shadow .25s; }
+.fcard:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(26,26,46,0.1); }
+.fcard .icon { font-size:26px; margin-bottom:10px; }
+.fcard .ft { font-size:13px; font-weight:700; margin-bottom:6px; color:var(--ink); }
+.fcard .fd { font-size:13.5px; color:var(--muted); line-height:1.55; }
+.flist { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+.flist li { font-size:14px; display:flex; align-items:center; gap:10px; color:var(--ink-soft); }
+.flist li::before { content:"●"; color:var(--coral); flex-shrink:0; font-size:8px; }
 
-.uses-section { background:var(--cream); }
+.uses-section { background:var(--paper-blush); }
 .uses-lead { max-width:880px; margin-bottom:36px; }
-.uses-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:32px; align-items:stretch; }
-.use-card { background:white; padding:32px 30px; border-top:3px solid var(--oak); display:flex; flex-direction:column; }
-.use-card.alt { border-top-color:var(--light-muted); }
-.use-card h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:400; margin-bottom:14px; }
-.use-card p { font-size:14px; line-height:1.75; color:#555; margin-bottom:14px; }
-.use-card ul { list-style:none; margin-top:6px; }
-.use-card ul li { font-size:13.5px; padding:8px 0; border-bottom:1px solid var(--light-muted); color:#444; }
+.uses-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:24px; align-items:stretch; }
+.use-card { background:white; padding:32px 30px; border-radius:18px; display:flex; flex-direction:column; box-shadow:0 6px 24px rgba(255,90,95,0.08); }
+.use-card.primary { background:linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%); color:white; }
+.use-card h3 { font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700; margin-bottom:14px; letter-spacing:-0.4px; }
+.use-card p { font-size:15px; line-height:1.7; margin-bottom:14px; }
+.use-card.primary p { color:rgba(255,255,255,0.92); }
+.use-card.alt p { color:var(--ink-soft); }
+.use-card ul { list-style:none; margin-top:8px; }
+.use-card ul li { font-size:14px; padding:8px 0; }
+.use-card.primary ul li { border-bottom:1px solid rgba(255,255,255,0.18); color:white; }
+.use-card.alt ul li { border-bottom:1px solid var(--line); color:var(--ink-soft); }
 .use-card ul li:last-child { border-bottom:none; }
-.use-card ul li::before { content:"›"; color:var(--oak); margin-right:10px; font-weight:500; }
-.not-suited { margin-top:22px; background:var(--warm-white); border-left:3px solid var(--muted); padding:12px 16px; font-size:12.5px; color:var(--muted); line-height:1.6; }
-.not-suited strong { color:var(--charcoal); font-weight:500; }
+.use-card.primary ul li::before { content:"›"; color:var(--gold); margin-right:10px; font-weight:700; }
+.use-card.alt ul li::before { content:"›"; color:var(--coral); margin-right:10px; font-weight:700; }
+.not-suited { margin-top:18px; background:var(--paper-cream); border-radius:10px; padding:12px 16px; font-size:13px; color:var(--muted); line-height:1.55; }
+.not-suited strong { color:var(--ink); font-weight:600; }
 
 .terms-section { background:white; }
-.terms-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.tcard {
-  background:var(--cream); padding:26px 24px; border-top:3px solid var(--oak);
-  display:flex; flex-direction:column;
-}
-.tcard .tlbl { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--oak); margin-bottom:10px; }
-.tcard .tval { font-family:'Playfair Display',serif; font-size:22px; font-weight:400; line-height:1.2; margin-bottom:10px; color:var(--charcoal); }
-.tcard .tdesc { font-size:13px; line-height:1.6; color:#555; }
-.terms-cta { margin-top:30px; max-width:780px; font-size:14px; color:#555; line-height:1.75; }
-.terms-cta a { color:var(--dark-oak); border-bottom:1px solid rgba(196,147,90,0.5); text-decoration:none; }
+.terms-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.tcard { background:var(--paper-cream); padding:26px 24px; border-radius:14px; display:flex; flex-direction:column; transition:transform .25s; }
+.tcard:hover { transform:translateY(-4px); }
+.tcard:nth-child(1) { background:var(--coral-soft); }
+.tcard:nth-child(2) { background:var(--gold-soft); }
+.tcard:nth-child(3) { background:var(--paper-cream); }
+.tcard:nth-child(4) { background:#e8f5f3; }
+.tcard .tlbl { font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:10px; }
+.tcard .tval { font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700; line-height:1.15; margin-bottom:10px; color:var(--ink); letter-spacing:-0.4px; }
+.tcard .tdesc { font-size:13px; line-height:1.6; color:var(--ink-soft); }
+.terms-cta { margin-top:30px; max-width:780px; font-size:15px; color:var(--ink-soft); line-height:1.7; }
+.terms-cta a { color:var(--coral); border-bottom:2px solid var(--coral-soft); text-decoration:none; font-weight:600; transition:border-color .2s; }
+.terms-cta a:hover { border-bottom-color:var(--coral); }
 
-.loc-section { background:var(--cream); }
+.loc-section { background:var(--paper-cream); }
 .loc-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
-.loc-cards { display:grid; gap:14px; }
-.loc-card { background:white; padding:22px 24px; border-left:3px solid var(--oak); }
-.loc-card .lct { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--oak); margin-bottom:6px; }
-.loc-card .lcv { font-size:14px; line-height:1.7; color:#444; }
-.loc-card a { color:var(--dark-oak); border-bottom:1px solid rgba(196,147,90,0.4); text-decoration:none; }
+.loc-cards { display:grid; gap:12px; }
+.loc-card { background:white; padding:22px 24px; border-radius:14px; transition:transform .2s; }
+.loc-card:hover { transform:translateX(4px); }
+.loc-card .lct { font-size:12px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:var(--coral); margin-bottom:6px; }
+.loc-card .lcv { font-size:14.5px; line-height:1.65; color:var(--ink-soft); }
+.loc-card a { color:var(--coral); border-bottom:1px solid var(--coral-soft); text-decoration:none; font-weight:600; }
 
-.contact-section { background:var(--charcoal); color:var(--cream); padding:80px; }
-.contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-.contact-inner h2 { font-family:'Playfair Display',serif; font-size:clamp(32px,4vw,48px); font-weight:400; line-height:1.15; margin-bottom:22px; color:white; }
-.contact-inner p { font-size:15px; line-height:1.8; color:#e0d5c5; margin-bottom:28px; }
-.contact-form-hint { background:rgba(255,255,255,0.05); border-left:3px solid var(--oak); padding:18px 22px; margin-bottom:28px; }
-.contact-form-hint .cfh-t { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--oak); margin-bottom:10px; }
+.contact-section { background:var(--ink); color:white; padding:90px 80px; position:relative; overflow:hidden; }
+.contact-section::before {
+  content:""; position:absolute; top:-100px; right:-100px; width:400px; height:400px;
+  background:radial-gradient(circle, rgba(255,90,95,0.25) 0%, transparent 70%);
+}
+.contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:1; }
+.contact-inner h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(32px,3.8vw,46px); font-weight:700; line-height:1.1; margin-bottom:22px; color:white; letter-spacing:-1px; }
+.contact-inner h2 .accent { color:var(--coral); }
+.contact-inner p { font-size:16px; line-height:1.75; color:rgba(255,255,255,0.82); margin-bottom:28px; }
+.contact-form-hint { background:rgba(255,255,255,0.06); border-radius:14px; padding:20px 24px; margin-bottom:28px; }
+.contact-form-hint .cfh-t { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
 .contact-form-hint ul { list-style:none; padding:0; }
-.contact-form-hint li { font-size:13px; color:#d8cdb8; padding:4px 0; }
-.contact-form-hint li::before { content:"·"; color:var(--oak); margin-right:8px; font-weight:bold; }
+.contact-form-hint li { font-size:14px; color:rgba(255,255,255,0.85); padding:5px 0; display:flex; align-items:center; gap:10px; }
+.contact-form-hint li::before { content:"○"; color:var(--coral); font-weight:bold; font-size:10px; }
 .cdetail { margin-bottom:16px; }
-.cdetail .cl { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--oak); margin-bottom:4px; }
+.cdetail .cl { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
 .cdetail .cv { font-size:16px; }
-.cdetail a { color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(196,147,90,.4); padding-bottom:2px; }
-.contact-img { width:100%; height:420px; object-fit:cover; }
+.cdetail a { color:white; text-decoration:none; border-bottom:1px solid rgba(255,90,95,0.5); padding-bottom:2px; }
+.contact-img { width:100%; height:440px; object-fit:cover; border-radius:18px; }
 
-footer { background:#111; color:var(--muted); padding:26px 80px; display:flex; justify-content:space-between; font-size:12px; }
-footer a { color:var(--muted); text-decoration:none; }
+footer { background:#0f0f1c; color:rgba(255,255,255,0.5); padding:24px 80px; display:flex; justify-content:space-between; font-size:13px; }
+footer a { color:rgba(255,255,255,0.5); text-decoration:none; }
+footer a:hover { color:var(--coral); }
 
 @media(max-width:980px){
   nav { padding:14px 20px; } .nav-links { display:none; }
   .hero-stage { grid-template-columns:1fr; padding:100px 24px 80px; gap:32px; text-align:center; }
-  .hero-text-left { text-align:center; padding-right:0; }
-  .hero-text-left .sub { margin-left:auto; margin-right:auto; }
-  .door-frame { width:min(60vw, 320px); margin:0 auto; }
+  .hero-text-left { padding-right:0; }
+  .hero-text-left .sub { margin:0 auto 30px; }
+  .door-frame { width:min(60vw, 300px); margin:0 auto; }
   .hero-text-right { padding-left:0; }
   .hero-text-right .stats { justify-content:center; }
   .hero-btns { justify-content:center; }
   section { padding:56px 24px; }
   .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
-  .gitem.span3, .gitem.row2 { grid-column:auto; grid-row:auto; height:240px; }
-  .features-grid, .uses-grid, .loc-grid, .contact-inner { grid-template-columns:1fr; gap:40px; }
+  .gitem.span3, .gitem.row2 { grid-column:auto; grid-row:auto; height:220px; }
+  .features-grid, .uses-grid, .loc-grid, .contact-inner { grid-template-columns:1fr; gap:36px; }
   .fcards, .flist { grid-template-columns:1fr 1fr; }
   .terms-grid { grid-template-columns:1fr 1fr; }
   .contact-section { padding:56px 24px; }
@@ -220,8 +259,12 @@ footer a { color:var(--muted); text-decoration:none; }
   <div class="hero-stage">
     <div class="hero-text-left">
       <div class="eyebrow" id="eyebrow">Saal zur Wochenmiete · Bern</div>
-      <h1 id="hero-title">Saal mieten<br><em>in Bern.</em></h1>
-      <div class="sub" id="hero-sub">60&nbsp;m² Saal mit Holzparkett, eigenem WC und Klavier. Zur regelm&auml;ssigen Belegung von Montag bis Freitag &ndash; f&uuml;r Tanz, Musik, Bewegung, Kurse.</div>
+      <h1 id="hero-title">Suchst du einen Raum f&uuml;r deine <span class="accent">Tanz-, Musik-</span> oder <span class="accent">Gesangsstunden</span> in Bern?</h1>
+      <div class="sub" id="hero-sub">60&nbsp;m² Saal mit Holzparkett und Klavier &ndash; mitten in Bern. F&uuml;r deinen w&ouml;chentlichen Kurs, deine Probe oder dein Studio. Mo&ndash;Fr buchbar.</div>
+      <div class="hero-btns">
+        <a href="#kontakt" class="btn-pri" id="btn1">Anfrage senden</a>
+        <a href="#raum" class="btn-sec" id="btn2">Saal ansehen</a>
+      </div>
     </div>
 
     <a href="#raum" class="door-frame" aria-label="Saal ansehen">
@@ -232,34 +275,30 @@ footer a { color:var(--muted); text-decoration:none; }
       <div class="hero-pills">
         <div class="pill accent" id="pill0">Wochenmiete Mo&ndash;Fr</div>
         <div class="pill" id="pill1">60 m²</div>
-        <div class="pill" id="pill2">Holzparkett</div>
-        <div class="pill" id="pill3">Klavier</div>
+        <div class="pill accent2" id="pill2">Klavier</div>
+        <div class="pill" id="pill3">Holzparkett</div>
       </div>
       <div class="stats">
         <div class="stat"><div class="lbl" id="hs0l">Fl&auml;che</div><div class="val">60</div><div class="un" id="hs0u">m²</div></div>
         <div class="stat"><div class="lbl" id="hs1l">Boden</div><div class="val" style="font-size:22px;" id="hs1v">Parkett</div><div class="un" id="hs1u">W&uuml;rfel-Muster</div></div>
         <div class="stat"><div class="lbl" id="hs2l">Inkl.</div><div class="val" style="font-size:22px;" id="hs2v">WC</div><div class="un" id="hs2u">direkt am Saal</div></div>
       </div>
-      <div class="hero-btns">
-        <a href="#kontakt" class="btn-w" id="btn1">Anfrage stellen</a>
-        <a href="#konditionen" class="btn-o" id="btn2">Konditionen</a>
-      </div>
     </div>
   </div>
-  <div class="scroll-hint" id="scrollHint">Mehr</div>
+  <div class="scroll-hint" id="scrollHint">Mehr entdecken</div>
 </section>
 
-<section style="background:white;" id="raum">
+<section style="background:var(--paper);" id="raum">
   <div class="section-label" id="sl0">Der Saal</div>
   <h2 class="stitle" id="st0">60 m² Holzparkett im Berner Altbau</h2>
   <p class="intro-p" id="rp1">Ein 60&nbsp;m² grosser Saal mit W&uuml;rfelparkett aus Holz, Holzvert&auml;felung an den W&auml;nden, hohen Sprossenfenstern und einer umlaufenden Empore. Klavier vor Ort, Beamer unter der Empore, St&uuml;hle vorhanden.</p>
   <p class="intro-p" id="rp2">Direkt am Saal liegt ein eigenes WC. Der Raum ist hell, ruhig und schlicht &ndash; geeignet f&uuml;r alles vom Tanzkurs &uuml;ber Musikunterricht bis zur Theaterprobe.</p>
   <div class="gallery-grid" style="margin-top:36px;">
     <div class="gitem span3 row2" onclick="openLb(0)"><img src="saal_hauptansicht.jpg" alt="Saal Hauptansicht"><div class="cap" id="cap0">Hauptansicht</div></div>
-    <div class="gitem span3" onclick="openLb(1)"><img src="saal_innen.jpg" alt="Blick zum Eingang"><div class="cap" id="cap1">Blick Richtung Eingang</div></div>
-    <div class="gitem span3" onclick="openLb(2)"><img src="saal_klavier.jpg" alt="Klavier und St&uuml;hle"><div class="cap" id="cap2">Klavier &amp; B&uuml;hnenseite</div></div>
-    <div class="gitem span3" onclick="openLb(3)"><img src="saal_galerie.jpg" alt="Blick von der Empore"><div class="cap" id="cap3">Empore</div></div>
-    <div class="gitem span3" onclick="openLb(4)"><img src="saal_fenster.jpg" alt="Fensterseite"><div class="cap" id="cap4">Fensterseite</div></div>
+    <div class="gitem span3" onclick="openLb(1)"><img src="saal_innen.jpg" alt="Blick zum Eingang"><div class="cap" id="cap1">Richtung Eingang</div></div>
+    <div class="gitem span3" onclick="openLb(2)"><img src="saal_klavier.jpg" alt="Klavier"><div class="cap" id="cap2">Klavier &amp; B&uuml;hnenseite</div></div>
+    <div class="gitem span3" onclick="openLb(3)"><img src="saal_galerie.jpg" alt="Empore"><div class="cap" id="cap3">Empore</div></div>
+    <div class="gitem span3" onclick="openLb(4)"><img src="saal_fenster.jpg" alt="Fenster"><div class="cap" id="cap4">Fensterseite</div></div>
   </div>
   <div class="lb-overlay" id="lb">
     <div class="lb-close" onclick="closeLb()">&times;</div>
@@ -269,7 +308,7 @@ footer a { color:var(--muted); text-decoration:none; }
   </div>
 </section>
 
-<section style="background:var(--warm-white);">
+<section style="background:var(--paper-cream);">
   <div class="features-grid">
     <div>
       <div class="section-label" id="sl1">Ausstattung</div>
@@ -283,11 +322,11 @@ footer a { color:var(--muted); text-decoration:none; }
         <li id="fl4">St&uuml;hle vorhanden</li>
         <li id="fl5">Eigenes WC am Saal</li>
         <li id="fl6">Tageslicht, hohe Fenster</li>
-        <li id="fl7">Heizung &amp; Strom inklusive</li>
+        <li id="fl7">Heizung &amp; Strom inkl.</li>
       </ul>
     </div>
     <div class="fcards">
-      <div class="fcard"><div class="icon">&#128208;</div><div class="ft" id="fc0t">60 m²</div><div class="fd" id="fc0d">Bewegungstaugliche Bodenfl&auml;che f&uuml;r Gruppen bis ca. 20 Personen</div></div>
+      <div class="fcard"><div class="icon">&#128208;</div><div class="ft" id="fc0t">60 m²</div><div class="fd" id="fc0d">Bewegungstaugliche Fl&auml;che f&uuml;r Gruppen bis ca. 20 Personen</div></div>
       <div class="fcard"><div class="icon">&#127932;</div><div class="ft" id="fc1t">Klavier</div><div class="fd" id="fc1d">Klavier vor Ort &ndash; ideal f&uuml;r Musik- und Gesangsunterricht</div></div>
       <div class="fcard"><div class="icon">&#128704;</div><div class="ft" id="fc2t">Eigenes WC</div><div class="fd" id="fc2d">WC direkt am Saal &ndash; kein Weg durch andere R&auml;ume</div></div>
       <div class="fcard"><div class="icon">&#9728;&#65039;</div><div class="ft" id="fc3t">Tageslicht</div><div class="fd" id="fc3d">Helle Fenster auf zwei Seiten, ruhige Lage zum Hof</div></div>
@@ -297,18 +336,18 @@ footer a { color:var(--muted); text-decoration:none; }
 
 <section class="uses-section" id="nutzung">
   <div class="section-label" id="sl2">Nutzung</div>
-  <h2 class="stitle" id="st2">Geeignete Mieter</h2>
+  <h2 class="stitle" id="st2">F&uuml;r wen ist der Saal?</h2>
   <p class="intro-p uses-lead" id="up1">Wir vermieten den Saal an Personen und Unternehmen mit regelm&auml;ssigem Raumbedarf zwischen Montag und Freitag &ndash; Tanzschulen, Musiklehrer, Yoga-Studios, Bewegungstrainer, Theatergruppen, Kursanbieter. Bevorzugt vermieten wir an Anbieter mit Angeboten f&uuml;r Kinder, Jugendliche oder im Bereich Sport und Bewegung.</p>
 
   <div class="uses-grid">
-    <div class="use-card">
+    <div class="use-card primary">
       <h3 id="up-pri-t">Bevorzugte Mieter</h3>
       <p id="up-pri-p">Bei gleichwertigen Anfragen vergeben wir den Saal vorrangig an Anbieter, die mit Kindern, Jugendlichen oder im Bereich Bewegung und Sport arbeiten.</p>
       <ul>
         <li id="up-li0">Tanzschulen &amp; Kindertanz</li>
         <li id="up-li1">Musik- und Gesangsunterricht</li>
-        <li id="up-li2">Yoga, Pilates, Bewegungstraining</li>
-        <li id="up-li3">Jugend-Theater / Schauspielunterricht</li>
+        <li id="up-li2">Yoga, Pilates, Bewegung</li>
+        <li id="up-li3">Jugend-Theater / Schauspiel</li>
         <li id="up-li4">Sport- und Bewegungskurse</li>
       </ul>
     </div>
@@ -321,7 +360,7 @@ footer a { color:var(--muted); text-decoration:none; }
         <li id="up-li7">Probenraum (Chor, Ensemble)</li>
         <li id="up-li8">Kleingruppen-Coaching</li>
       </ul>
-      <div class="not-suited" id="not-suited"><strong>Nicht geeignet:</strong> dauerhafte B&uuml;ronutzung, gewerbliches Lager, Abendveranstaltungen mit Lautst&auml;rke.</div>
+      <div class="not-suited" id="not-suited"><strong>Nicht geeignet:</strong> dauerhafte B&uuml;ronutzung, gewerbliches Lager, laute Abendveranstaltungen.</div>
     </div>
   </div>
 </section>
@@ -333,22 +372,22 @@ footer a { color:var(--muted); text-decoration:none; }
     <div class="tcard">
       <div class="tlbl" id="t0l">Mietart</div>
       <div class="tval" id="t0v">Wochenmiete</div>
-      <div class="tdesc" id="t0d">Regelm&auml;ssige Belegung Mo&ndash;Fr mit festem Zeitslot. Mindestens 1 Tag pro Woche.</div>
+      <div class="tdesc" id="t0d">Regelm&auml;ssige Belegung Mo&ndash;Fr mit festem Zeitslot. Mind. 1 Tag pro Woche.</div>
     </div>
     <div class="tcard">
       <div class="tlbl" id="t1l">Mietpreis</div>
       <div class="tval" id="t1v">Auf Anfrage</div>
-      <div class="tdesc" id="t1d">Preis nach Frequenz, Belegungszeit und Saison. Inkl. Nebenkosten, Strom, Heizung, Reinigung.</div>
+      <div class="tdesc" id="t1d">Preis nach Frequenz und Belegungszeit. Inkl. NK, Strom, Heizung, Reinigung.</div>
     </div>
     <div class="tcard">
       <div class="tlbl" id="t2l">Vertrag</div>
       <div class="tval" id="t2v">Schriftlich</div>
-      <div class="tdesc" id="t2d">Schriftlicher Mietvertrag mit beidseitiger K&uuml;ndigungsfrist. Anpassbar an die Nutzungsdauer.</div>
+      <div class="tdesc" id="t2d">Schriftlicher Mietvertrag mit beidseitiger K&uuml;ndigungsfrist.</div>
     </div>
     <div class="tcard">
-      <div class="tlbl" id="t3l">Verf&uuml;gbarkeit</div>
+      <div class="tlbl" id="t3l">Verf&uuml;gbar</div>
       <div class="tval" id="t3v">Ab sofort</div>
-      <div class="tdesc" id="t3d">Frei zur Belegung. Besichtigung nach Vereinbarung &ndash; einfach Anfrage senden.</div>
+      <div class="tdesc" id="t3d">Frei zur Belegung. Besichtigung nach Vereinbarung.</div>
     </div>
   </div>
   <p class="terms-cta" id="terms-cta">F&uuml;r ein konkretes Angebot ben&ouml;tigen wir Art der Nutzung, gew&uuml;nschte Wochentage und Zeitfenster sowie Frequenz. <a href="#kontakt" id="terms-cta-link">Anfrage stellen &rarr;</a></p>
@@ -358,10 +397,10 @@ footer a { color:var(--muted); text-decoration:none; }
   <div class="loc-grid">
     <div>
       <div class="section-label" id="sl3">Lage</div>
-      <h2 class="stitle" id="st3">Zentrale Lage in Bern</h2>
+      <h2 class="stitle" id="st3">Mitten in Bern</h2>
       <p class="intro-p" id="lp1">Brunnmattstrasse 50, 3007 Bern. Tramstation Cecilienplatz direkt nebenan, Bern-Zentrum in rund 10 Minuten. Rund um das Haus Parkpl&auml;tze in der Blauen Zone.</p>
-      <p class="intro-p" id="lp2">Weitere Angaben zu Anreise und Quartier finden Sie auf der Seite f&uuml;r dieselbe Adresse:</p>
-      <p style="margin-top:6px;"><a href="index inkl. Womiete.html" style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dark-oak);text-decoration:none;border-bottom:1px solid rgba(196,147,90,0.4);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
+      <p class="intro-p" id="lp2">Weitere Angaben zu Anreise und Quartier:</p>
+      <p style="margin-top:6px;"><a href="index inkl. Womiete.html" style="font-size:14px;color:var(--coral);text-decoration:none;font-weight:600;border-bottom:2px solid var(--coral-soft);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
     </div>
     <div class="loc-cards">
       <div class="loc-card">
@@ -383,31 +422,25 @@ footer a { color:var(--muted); text-decoration:none; }
 <section style="background:white;padding:0;">
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.0!2d7.4241!3d46.9431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39b0d5b2a3a3%3A0x0!2sBrunnmattstrasse+50%2C+3007+Bern!5e0!3m2!1sde!2sch!4v1234567890"
-    width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+    width="100%" height="360" style="border:0;display:block;" allowfullscreen="" loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
     title="Brunnmattstrasse 50, Bern">
   </iframe>
-  <div style="background:var(--charcoal);color:var(--cream);padding:20px 80px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-    <div style="font-size:13px;">&#128205; Brunnmattstrasse 50 · 3007 Bern</div>
-    <div style="font-size:12px;color:var(--light-muted);" id="mapsub">Tramstation Cecilienplatz · Blaue Zone rund ums Haus</div>
-    <a href="https://maps.google.com/?q=Brunnmattstrasse+50,+3007+Bern" target="_blank" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--oak);text-decoration:none;" id="maplink">In Google Maps &rarr;</a>
-  </div>
 </section>
 
 <section class="contact-section" id="kontakt">
   <div class="contact-inner">
     <div>
-      <div class="section-label" style="color:var(--oak);" id="sl-contact">Anfrage</div>
-      <h2 id="contactT">Anfrage senden.<br>Offerte innert 48&nbsp;h.</h2>
-      <p id="contactP">Senden Sie uns eine kurze Anfrage. Wir antworten in der Regel innert 48&nbsp;Stunden mit einem konkreten Mietangebot.</p>
+      <h2 id="contactT">Schreib uns. <span class="accent">Offerte in 48h.</span></h2>
+      <p id="contactP">Sag uns kurz, was du im Saal machen m&ouml;chtest und wann du ihn brauchst. Wir antworten in der Regel innert 48&nbsp;Stunden mit einem konkreten Mietangebot.</p>
       <div class="contact-form-hint">
-        <div class="cfh-t" id="cfh-t">In Ihre Anfrage geh&ouml;rt</div>
+        <div class="cfh-t" id="cfh-t">Was wir wissen m&uuml;ssen</div>
         <ul>
           <li id="cfh0">Art der geplanten Nutzung</li>
-          <li id="cfh1">Gew&uuml;nschte Wochentage &amp; Zeitfenster</li>
-          <li id="cfh2">Frequenz (z.B. w&ouml;chentlich, 14-t&auml;glich)</li>
-          <li id="cfh3">Gruppengr&ouml;sse / Anzahl Personen</li>
-          <li id="cfh4">Falls relevant: Arbeit mit Kindern oder Jugendlichen</li>
+          <li id="cfh1">Wochentage &amp; Zeitfenster</li>
+          <li id="cfh2">Frequenz (z.B. w&ouml;chentlich)</li>
+          <li id="cfh3">Gruppengr&ouml;sse</li>
+          <li id="cfh4">Arbeit mit Kindern oder Jugendlichen?</li>
         </ul>
       </div>
       <div class="cdetail"><div class="cl" id="cd0l">E-Mail</div><div class="cv"><a href="mailto:ivan.schmid@me.com" id="cd0v">ivan.schmid@me.com</a></div></div>
@@ -424,13 +457,7 @@ footer a { color:var(--muted); text-decoration:none; }
 </footer>
 
 <script>
-var lbSrcs = [
-  "saal_hauptansicht.jpg",
-  "saal_innen.jpg",
-  "saal_klavier.jpg",
-  "saal_galerie.jpg",
-  "saal_fenster.jpg"
-];
+var lbSrcs = ["saal_hauptansicht.jpg","saal_innen.jpg","saal_klavier.jpg","saal_galerie.jpg","saal_fenster.jpg"];
 var lbIdx = 0;
 function openLb(i){ lbIdx=i; document.getElementById("lb-img").src=lbSrcs[i]; document.getElementById("lb").classList.add("active"); }
 function closeLb(){ document.getElementById("lb").classList.remove("active"); }
@@ -440,149 +467,126 @@ document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLb()
 
 var T = {
   de: {
-    langBtn:"EN",
-    nav0:"Saal", nav1:"Nutzung", nav2:"Konditionen", nav3:"Anfrage",
+    langBtn:"EN", nav0:"Saal", nav1:"Nutzung", nav2:"Konditionen", nav3:"Anfrage",
     eyebrow:"Saal zur Wochenmiete · Bern",
-    heroTitle:"Saal mieten<br><em>in Bern.</em>",
-    heroSub:"60 m² Saal mit Holzparkett, eigenem WC und Klavier. Zur regelmässigen Belegung von Montag bis Freitag – für Tanz, Musik, Bewegung, Kurse.",
-    pill0:"Wochenmiete Mo–Fr", pill1:"60 m²", pill2:"Holzparkett", pill3:"Klavier",
-    hs0l:"Fläche", hs0u:"m²",
-    hs1l:"Boden", hs1v:"Parkett", hs1u:"Würfel-Muster",
+    heroTitle:'Suchst du einen Raum f&uuml;r deine <span class="accent">Tanz-, Musik-</span> oder <span class="accent">Gesangsstunden</span> in Bern?',
+    heroSub:"60 m² Saal mit Holzparkett und Klavier – mitten in Bern. Für deinen wöchentlichen Kurs, deine Probe oder dein Studio. Mo–Fr buchbar.",
+    pill0:"Wochenmiete Mo–Fr", pill1:"60 m²", pill2:"Klavier", pill3:"Holzparkett",
+    hs0l:"Fläche", hs0u:"m²", hs1l:"Boden", hs1v:"Parkett", hs1u:"Würfel-Muster",
     hs2l:"Inkl.", hs2v:"WC", hs2u:"direkt am Saal",
-    btn1:"Anfrage stellen", btn2:"Konditionen",
-    scrollHint:"Mehr",
+    btn1:"Anfrage senden", btn2:"Saal ansehen", scrollHint:"Mehr entdecken",
     sl0:"Der Saal", st0:"60 m² Holzparkett im Berner Altbau",
     rp1:"Ein 60 m² grosser Saal mit Würfelparkett aus Holz, Holzvertäfelung an den Wänden, hohen Sprossenfenstern und einer umlaufenden Empore. Klavier vor Ort, Beamer unter der Empore, Stühle vorhanden.",
     rp2:"Direkt am Saal liegt ein eigenes WC. Der Raum ist hell, ruhig und schlicht – geeignet für alles vom Tanzkurs über Musikunterricht bis zur Theaterprobe.",
-    cap0:"Hauptansicht", cap1:"Blick Richtung Eingang", cap2:"Klavier & Bühnenseite", cap3:"Empore", cap4:"Fensterseite",
+    cap0:"Hauptansicht", cap1:"Richtung Eingang", cap2:"Klavier & Bühnenseite", cap3:"Empore", cap4:"Fensterseite",
     sl1:"Ausstattung", st1:"Was im Saal vorhanden ist",
     fp1:"Bewegungs- und unterrichtstauglich ausgestattet. Was nicht vorhanden ist, kann nach Absprache ergänzt werden.",
-    fl:["Ca. 60 m² Bodenfläche","Würfelparkett (Holz)","Klavier vor Ort","Beamer unter Empore","Stühle vorhanden","Eigenes WC am Saal","Tageslicht, hohe Fenster","Heizung & Strom inklusive"],
-    fc0t:"60 m²", fc0d:"Bewegungstaugliche Bodenfläche für Gruppen bis ca. 20 Personen",
+    fl:["Ca. 60 m² Bodenfläche","Würfelparkett (Holz)","Klavier vor Ort","Beamer unter Empore","Stühle vorhanden","Eigenes WC am Saal","Tageslicht, hohe Fenster","Heizung & Strom inkl."],
+    fc0t:"60 m²", fc0d:"Bewegungstaugliche Fläche für Gruppen bis ca. 20 Personen",
     fc1t:"Klavier", fc1d:"Klavier vor Ort – ideal für Musik- und Gesangsunterricht",
     fc2t:"Eigenes WC", fc2d:"WC direkt am Saal – kein Weg durch andere Räume",
     fc3t:"Tageslicht", fc3d:"Helle Fenster auf zwei Seiten, ruhige Lage zum Hof",
-    sl2:"Nutzung", st2:"Geeignete Mieter",
+    sl2:"Nutzung", st2:"Für wen ist der Saal?",
     up1:"Wir vermieten den Saal an Personen und Unternehmen mit regelmässigem Raumbedarf zwischen Montag und Freitag – Tanzschulen, Musiklehrer, Yoga-Studios, Bewegungstrainer, Theatergruppen, Kursanbieter. Bevorzugt vermieten wir an Anbieter mit Angeboten für Kinder, Jugendliche oder im Bereich Sport und Bewegung.",
     upPriT:"Bevorzugte Mieter",
     upPriP:"Bei gleichwertigen Anfragen vergeben wir den Saal vorrangig an Anbieter, die mit Kindern, Jugendlichen oder im Bereich Bewegung und Sport arbeiten.",
-    upLi:["Tanzschulen & Kindertanz","Musik- und Gesangsunterricht","Yoga, Pilates, Bewegungstraining","Jugend-Theater / Schauspielunterricht","Sport- und Bewegungskurse","Erwachsenenkurse","Workshops und Seminare","Probenraum (Chor, Ensemble)","Kleingruppen-Coaching"],
+    upLi:["Tanzschulen & Kindertanz","Musik- und Gesangsunterricht","Yoga, Pilates, Bewegung","Jugend-Theater / Schauspiel","Sport- und Bewegungskurse","Erwachsenenkurse","Workshops und Seminare","Probenraum (Chor, Ensemble)","Kleingruppen-Coaching"],
     upBizT:"Ebenfalls geeignet",
     upBizP:"Auch andere gewerbliche Nutzungen mit regelmässigem Bedarf sind willkommen, sofern sie zur Lage und Akustik des Saals passen.",
-    notSuited:'<strong>Nicht geeignet:</strong> dauerhafte Büronutzung, gewerbliches Lager, Abendveranstaltungen mit Lautstärke.',
+    notSuited:'<strong>Nicht geeignet:</strong> dauerhafte Büronutzung, gewerbliches Lager, laute Abendveranstaltungen.',
     slTerms:"Mietkonditionen", stTerms:"Konditionen",
-    t0l:"Mietart", t0v:"Wochenmiete", t0d:"Regelmässige Belegung Mo–Fr mit festem Zeitslot. Mindestens 1 Tag pro Woche.",
-    t1l:"Mietpreis", t1v:"Auf Anfrage", t1d:"Preis nach Frequenz, Belegungszeit und Saison. Inkl. Nebenkosten, Strom, Heizung, Reinigung.",
-    t2l:"Vertrag", t2v:"Schriftlich", t2d:"Schriftlicher Mietvertrag mit beidseitiger Kündigungsfrist. Anpassbar an die Nutzungsdauer.",
-    t3l:"Verfügbarkeit", t3v:"Ab sofort", t3d:"Frei zur Belegung. Besichtigung nach Vereinbarung – einfach Anfrage senden.",
+    t0l:"Mietart", t0v:"Wochenmiete", t0d:"Regelmässige Belegung Mo–Fr mit festem Zeitslot. Mind. 1 Tag pro Woche.",
+    t1l:"Mietpreis", t1v:"Auf Anfrage", t1d:"Preis nach Frequenz und Belegungszeit. Inkl. NK, Strom, Heizung, Reinigung.",
+    t2l:"Vertrag", t2v:"Schriftlich", t2d:"Schriftlicher Mietvertrag mit beidseitiger Kündigungsfrist.",
+    t3l:"Verfügbar", t3v:"Ab sofort", t3d:"Frei zur Belegung. Besichtigung nach Vereinbarung.",
     termsCta:"Für ein konkretes Angebot benötigen wir Art der Nutzung, gewünschte Wochentage und Zeitfenster sowie Frequenz. ",
     termsCtaLink:"Anfrage stellen →",
-    sl3:"Lage", st3:"Zentrale Lage in Bern",
+    sl3:"Lage", st3:"Mitten in Bern",
     lp1:"Brunnmattstrasse 50, 3007 Bern. Tramstation Cecilienplatz direkt nebenan, Bern-Zentrum in rund 10 Minuten. Rund um das Haus Parkplätze in der Blauen Zone.",
-    lp2:"Weitere Angaben zu Anreise und Quartier finden Sie auf der Seite für dieselbe Adresse:",
+    lp2:"Weitere Angaben zu Anreise und Quartier:",
     lpLink:"Brunnmatt 50 – Wohnung & Anreise →",
     lc0t:"🚊 Öffentlicher Verkehr", lc0v:"Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.",
     lc1t:"🚗 Parkieren", lc1v:"Parkplätze in der Blauen Zone rund um das Haus – mit Tagesgebühr oder Parkkarte nutzbar.",
     lc2t:"🏠 Adresse", lc2v:"Brunnmattstrasse 50<br>3007 Bern, Schweiz",
-    mapsub:"Tramstation Cecilienplatz · Blaue Zone rund ums Haus",
-    maplink:"In Google Maps →",
-    slContact:"Anfrage",
-    contactT:"Anfrage senden.<br>Offerte innert 48 h.",
-    contactP:"Senden Sie uns eine kurze Anfrage. Wir antworten in der Regel innert 48 Stunden mit einem konkreten Mietangebot.",
-    cfhT:"In Ihre Anfrage gehört",
-    cfh:["Art der geplanten Nutzung","Gewünschte Wochentage & Zeitfenster","Frequenz (z.B. wöchentlich, 14-täglich)","Gruppengrösse / Anzahl Personen","Falls relevant: Arbeit mit Kindern oder Jugendlichen"],
-    cd0l:"E-Mail", cd1l:"Adresse",
-    footerMid:"Saal zur Wochenmiete"
+    contactT:'Schreib uns. <span class="accent">Offerte in 48h.</span>',
+    contactP:"Sag uns kurz, was du im Saal machen möchtest und wann du ihn brauchst. Wir antworten in der Regel innert 48 Stunden mit einem konkreten Mietangebot.",
+    cfhT:"Was wir wissen müssen",
+    cfh:["Art der geplanten Nutzung","Wochentage & Zeitfenster","Frequenz (z.B. wöchentlich)","Gruppengrösse","Arbeit mit Kindern oder Jugendlichen?"],
+    cd0l:"E-Mail", cd1l:"Adresse", footerMid:"Saal zur Wochenmiete"
   },
   en: {
-    langBtn:"DE",
-    nav0:"Hall", nav1:"Use", nav2:"Terms", nav3:"Enquire",
+    langBtn:"DE", nav0:"Hall", nav1:"Use", nav2:"Terms", nav3:"Enquire",
     eyebrow:"Hall for weekday rental · Bern",
-    heroTitle:"Rent a hall<br><em>in Bern.</em>",
-    heroSub:"A 60 m² hall with wooden parquet, private WC and a piano. For regular weekday use Monday to Friday – dance, music, movement, courses.",
-    pill0:"Weekday rental Mon–Fri", pill1:"60 m²", pill2:"Wooden parquet", pill3:"Piano",
-    hs0l:"Area", hs0u:"m²",
-    hs1l:"Floor", hs1v:"Parquet", hs1u:"block pattern",
+    heroTitle:'Looking for a space for your <span class="accent">dance, music</span> or <span class="accent">singing classes</span> in Bern?',
+    heroSub:"60 m² hall with wooden parquet and a piano – right in central Bern. For your weekly class, rehearsal or studio. Bookable Mon–Fri.",
+    pill0:"Weekday rental Mon–Fri", pill1:"60 m²", pill2:"Piano", pill3:"Wooden parquet",
+    hs0l:"Area", hs0u:"m²", hs1l:"Floor", hs1v:"Parquet", hs1u:"block pattern",
     hs2l:"Incl.", hs2v:"WC", hs2u:"next to the hall",
-    btn1:"Send enquiry", btn2:"Terms",
-    scrollHint:"More",
+    btn1:"Send enquiry", btn2:"See the hall", scrollHint:"More",
     sl0:"The Hall", st0:"60 m² wooden parquet in a Bern heritage building",
     rp1:"A 60 m² hall with wooden block parquet, wall panelling, tall lattice windows and an encircling gallery. Piano on site, projector below the gallery, chairs available.",
     rp2:"A private WC is right next to the hall. The room is bright, calm and unobtrusive – suitable for anything from dance classes to music lessons to theatre rehearsals.",
     cap0:"Main view", cap1:"Toward the entrance", cap2:"Piano & stage side", cap3:"Gallery", cap4:"Window side",
     sl1:"Features", st1:"What's in the hall",
     fp1:"Equipped for movement and teaching. Anything missing can be added by arrangement.",
-    fl:["About 60 m² of floor area","Block parquet (wood)","Piano on site","Projector below gallery","Chairs available","Private WC at the hall","Daylight, tall windows","Heating & power included"],
+    fl:["About 60 m² floor area","Block parquet (wood)","Piano on site","Projector below gallery","Chairs available","Private WC at the hall","Daylight, tall windows","Heating & power incl."],
     fc0t:"60 m²", fc0d:"Movement-ready floor area for groups up to ~20 people",
     fc1t:"Piano", fc1d:"Piano on site – ideal for music and singing lessons",
     fc2t:"Private WC", fc2d:"WC right at the hall – no walking through other rooms",
     fc3t:"Daylight", fc3d:"Bright windows on two sides, quiet courtyard exposure",
-    sl2:"Use", st2:"Target tenants",
-    up1:"We rent the hall to individuals and businesses with regular weekday space needs – dance schools, music teachers, yoga studios, movement trainers, theatre groups, course providers. We give priority to tenants whose offerings are for children, teenagers, or in the field of sport and movement.",
+    sl2:"Use", st2:"Who is the hall for?",
+    up1:"We rent the hall to individuals and businesses with regular weekday space needs – dance schools, music teachers, yoga studios, movement trainers, theatre groups, course providers. We give priority to tenants working with children, teenagers, or in sport and movement.",
     upPriT:"Preferred tenants",
-    upPriP:"All else equal, we prioritise providers who work with children, teenagers, or in the area of movement and sport.",
-    upLi:["Dance schools & children's dance","Music and singing lessons","Yoga, pilates, movement training","Youth theatre / acting classes","Sports and movement courses","Adult courses","Workshops and seminars","Rehearsal space (choir, ensemble)","Small-group coaching"],
+    upPriP:"All else equal, we prioritise providers who work with children, teenagers, or in movement and sport.",
+    upLi:["Dance schools & children's dance","Music and singing lessons","Yoga, pilates, movement","Youth theatre / acting","Sports and movement courses","Adult courses","Workshops and seminars","Rehearsal space","Small-group coaching"],
     upBizT:"Also suitable",
-    upBizP:"Other commercial uses with regular demand are welcome too, provided they fit the location and acoustics of the hall.",
-    notSuited:'<strong>Not suitable for:</strong> permanent office use, commercial storage, loud evening events.',
+    upBizP:"Other commercial uses with regular demand are welcome too, if they fit the location and acoustics.",
+    notSuited:'<strong>Not suitable for:</strong> permanent office use, storage, loud evening events.',
     slTerms:"Rental terms", stTerms:"Terms",
     t0l:"Rental type", t0v:"Weekday rental", t0d:"Regular use Mon–Fri with a fixed time slot. Minimum 1 day per week.",
-    t1l:"Price", t1v:"On request", t1d:"Price depending on frequency, duration and season. Incl. utilities, electricity, heating, cleaning.",
-    t2l:"Contract", t2v:"Written", t2d:"Written rental agreement with mutual notice period. Adapted to the rental duration.",
-    t3l:"Availability", t3v:"From now", t3d:"Available immediately. Viewings by appointment – just send an enquiry.",
-    termsCta:"For a concrete offer we need the type of use, desired weekdays and time slots, and frequency. ",
+    t1l:"Price", t1v:"On request", t1d:"Price depending on frequency and duration. Incl. utilities, electricity, heating, cleaning.",
+    t2l:"Contract", t2v:"Written", t2d:"Written rental agreement with mutual notice period.",
+    t3l:"Available", t3v:"From now", t3d:"Available immediately. Viewings by appointment.",
+    termsCta:"For a concrete offer we need the type of use, desired weekdays, time slots and frequency. ",
     termsCtaLink:"Send enquiry →",
-    sl3:"Location", st3:"Central location in Bern",
-    lp1:"Brunnmattstrasse 50, 3007 Bern. The Cecilienplatz tram stop is right next door; Bern centre is about 10 minutes away. Blue-zone parking around the building.",
-    lp2:"Further details on access and the neighbourhood are on the page for the same address:",
+    sl3:"Location", st3:"Central Bern",
+    lp1:"Brunnmattstrasse 50, 3007 Bern. Cecilienplatz tram stop right next door, Bern centre about 10 minutes away. Blue-zone parking around the building.",
+    lp2:"More on access and the neighbourhood:",
     lpLink:"Brunnmatt 50 – Apartment & Access →",
     lc0t:"🚊 Public transport", lc0v:"Cecilienplatz tram stop right next door. Bern centre in 10 minutes.",
     lc1t:"🚗 Parking", lc1v:"Blue-zone parking around the building – with day pass or parking card.",
     lc2t:"🏠 Address", lc2v:"Brunnmattstrasse 50<br>3007 Bern, Switzerland",
-    mapsub:"Cecilienplatz tram stop · Blue-zone parking around the building",
-    maplink:"Open in Google Maps →",
-    slContact:"Enquiry",
-    contactT:"Send your enquiry.<br>Offer within 48 h.",
-    contactP:"Send us a short enquiry. We usually reply within 48 hours with a concrete rental offer.",
-    cfhT:"Include in your enquiry",
-    cfh:["Type of use planned","Desired weekdays & time slots","Frequency (e.g. weekly, biweekly)","Group size / number of people","If relevant: working with children or teenagers"],
-    cd0l:"Email", cd1l:"Address",
-    footerMid:"Hall for weekday rental"
+    contactT:'Send a message. <span class="accent">Offer in 48h.</span>',
+    contactP:"Tell us briefly what you'd like to do in the hall and when you need it. We usually reply within 48 hours with a concrete rental offer.",
+    cfhT:"What we need to know",
+    cfh:["Type of use planned","Weekdays & time slots","Frequency (e.g. weekly)","Group size","Working with children or teenagers?"],
+    cd0l:"Email", cd1l:"Address", footerMid:"Hall for weekday rental"
   }
 };
 
 var lang = "de";
-function setEl(id, text, html) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  if (html) el.innerHTML = text; else el.textContent = text;
-}
+function setEl(id, text, html) { var el = document.getElementById(id); if (!el) return; if (html) el.innerHTML = text; else el.textContent = text; }
 function toggleLang() {
-  lang = lang === "de" ? "en" : "de";
-  var t = T[lang];
+  lang = lang === "de" ? "en" : "de"; var t = T[lang];
   setEl("lang-btn", t.langBtn);
   setEl("nav0", t.nav0); setEl("nav1", t.nav1); setEl("nav2", t.nav2); setEl("nav3", t.nav3);
   setEl("eyebrow", t.eyebrow);
-  setEl("hero-title", t.heroTitle, true);
-  setEl("hero-sub", t.heroSub);
+  setEl("hero-title", t.heroTitle, true); setEl("hero-sub", t.heroSub);
   setEl("pill0", t.pill0); setEl("pill1", t.pill1); setEl("pill2", t.pill2); setEl("pill3", t.pill3);
   setEl("hs0l", t.hs0l); setEl("hs0u", t.hs0u);
   setEl("hs1l", t.hs1l); setEl("hs1v", t.hs1v); setEl("hs1u", t.hs1u);
   setEl("hs2l", t.hs2l); setEl("hs2v", t.hs2v); setEl("hs2u", t.hs2u);
-  setEl("btn1", t.btn1); setEl("btn2", t.btn2);
-  setEl("scrollHint", t.scrollHint);
+  setEl("btn1", t.btn1); setEl("btn2", t.btn2); setEl("scrollHint", t.scrollHint);
   setEl("sl0", t.sl0); setEl("st0", t.st0);
   setEl("rp1", t.rp1); setEl("rp2", t.rp2);
   setEl("cap0", t.cap0); setEl("cap1", t.cap1); setEl("cap2", t.cap2); setEl("cap3", t.cap3); setEl("cap4", t.cap4);
-  setEl("sl1", t.sl1); setEl("st1", t.st1);
-  setEl("fp1", t.fp1);
+  setEl("sl1", t.sl1); setEl("st1", t.st1); setEl("fp1", t.fp1);
   for (var i=0; i<8; i++) setEl("fl"+i, t.fl[i]);
   setEl("fc0t", t.fc0t); setEl("fc0d", t.fc0d);
   setEl("fc1t", t.fc1t); setEl("fc1d", t.fc1d);
   setEl("fc2t", t.fc2t); setEl("fc2d", t.fc2d);
   setEl("fc3t", t.fc3t); setEl("fc3d", t.fc3d);
-  setEl("sl2", t.sl2); setEl("st2", t.st2);
-  setEl("up1", t.up1);
+  setEl("sl2", t.sl2); setEl("st2", t.st2); setEl("up1", t.up1);
   setEl("up-pri-t", t.upPriT); setEl("up-pri-p", t.upPriP);
   for (var j=0; j<9; j++) setEl("up-li"+j, t.upLi[j]);
   setEl("up-biz-t", t.upBizT); setEl("up-biz-p", t.upBizP);
@@ -595,19 +599,14 @@ function toggleLang() {
   var ctaEl = document.getElementById("terms-cta");
   if (ctaEl) ctaEl.innerHTML = t.termsCta + '<a href="#kontakt" id="terms-cta-link">'+t.termsCtaLink+'</a>';
   setEl("sl3", t.sl3); setEl("st3", t.st3);
-  setEl("lp1", t.lp1); setEl("lp2", t.lp2);
-  setEl("lp-link", t.lpLink);
+  setEl("lp1", t.lp1); setEl("lp2", t.lp2); setEl("lp-link", t.lpLink);
   setEl("lc0t", t.lc0t); setEl("lc0v", t.lc0v);
   setEl("lc1t", t.lc1t); setEl("lc1v", t.lc1v);
   setEl("lc2t", t.lc2t); setEl("lc2v", t.lc2v, true);
-  setEl("mapsub", t.mapsub);
-  setEl("maplink", t.maplink);
-  setEl("sl-contact", t.slContact);
   setEl("contactT", t.contactT, true); setEl("contactP", t.contactP);
   setEl("cfh-t", t.cfhT);
   for (var k=0; k<5; k++) setEl("cfh"+k, t.cfh[k]);
-  setEl("cd0l", t.cd0l); setEl("cd1l", t.cd1l);
-  setEl("footer-mid", t.footerMid);
+  setEl("cd0l", t.cd0l); setEl("cd1l", t.cd1l); setEl("footer-mid", t.footerMid);
 }
 document.getElementById("lang-btn").addEventListener("click", toggleLang);
 </script>
