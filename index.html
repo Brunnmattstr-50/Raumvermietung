@@ -45,7 +45,7 @@ nav {
 #lang-btn { background:none; border:1.5px solid var(--line); padding:8px 16px; font-size:12px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; color:var(--ink); border-radius:999px; transition:all .2s; }
 #lang-btn:hover { border-color:var(--sage-dark); color:var(--sage-dark); }
 
-/* HERO — split layout, no door */
+/* HERO */
 .hero {
   min-height:100vh; position:relative; overflow:hidden;
   display:grid; grid-template-columns:1.05fr 1fr;
@@ -55,7 +55,6 @@ nav {
   padding:140px 70px 80px; display:flex; flex-direction:column; justify-content:center;
   position:relative;
 }
-/* decorative blobs */
 .blob { position:absolute; border-radius:50%; z-index:0; pointer-events:none; }
 .blob-y { width:280px; height:280px; background:var(--mustard-soft); top:80px; left:-100px; opacity:0.6; }
 .blob-s { width:200px; height:200px; background:var(--sage-soft); bottom:50px; left:340px; opacity:0.5; }
@@ -78,11 +77,9 @@ nav {
 .hero h1 .hl-s { color:var(--sage-dark); }
 
 .hero-sub {
-  font-size:17px; color:var(--ink-soft); line-height:1.65; max-width:480px; margin-bottom:30px; font-weight:400;
+  font-size:17px; color:var(--ink-soft); line-height:1.65; max-width:480px; margin-bottom:30px;
 }
-.hero-facts {
-  display:flex; gap:8px; flex-wrap:wrap; margin-bottom:34px;
-}
+.hero-facts { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:34px; }
 .fact {
   background:white; padding:8px 16px; border-radius:999px; font-size:13px; font-weight:500;
   color:var(--ink); border:1px solid var(--line);
@@ -91,26 +88,17 @@ nav {
 .fact.s { background:var(--sage); border-color:var(--sage); color:white; font-weight:600; }
 
 .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
-.btn-pri {
-  background:var(--ink); color:var(--paper); padding:15px 30px; font-size:14px; font-weight:600;
-  text-decoration:none; border-radius:999px; transition:all .25s;
-}
+.btn-pri { background:var(--ink); color:var(--paper); padding:15px 30px; font-size:14px; font-weight:600; text-decoration:none; border-radius:999px; transition:all .25s; }
 .btn-pri:hover { background:var(--sage-dark); transform:translateY(-2px); }
-.btn-sec {
-  border:1.5px solid var(--ink); color:var(--ink); padding:15px 30px; font-size:14px; font-weight:500;
-  text-decoration:none; border-radius:999px; transition:all .25s; background:transparent;
-}
+.btn-sec { border:1.5px solid var(--ink); color:var(--ink); padding:15px 30px; font-size:14px; font-weight:500; text-decoration:none; border-radius:999px; transition:all .25s; background:transparent; }
 .btn-sec:hover { background:var(--ink); color:var(--paper); }
 
-.hero-img {
-  position:relative; overflow:hidden;
-}
+.hero-img { position:relative; overflow:hidden; }
 .hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
 .hero-img::after {
   content:""; position:absolute; top:30px; right:30px;
   width:120px; height:120px; border-radius:50%;
   background:var(--mustard); z-index:2;
-  display:flex; align-items:center; justify-content:center;
 }
 .hero-stamp {
   position:absolute; top:65px; right:65px; z-index:3;
@@ -131,12 +119,12 @@ section { padding:90px 80px; }
 .section-label::before { content:""; width:5px; height:5px; background:var(--sage-dark); border-radius:50%; }
 h2.stitle {
   font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,3.2vw,42px);
-  font-weight:700; margin-bottom:28px; line-height:1.1; letter-spacing:-0.8px; color:var(--ink);
+  font-weight:700; margin-bottom:24px; line-height:1.1; letter-spacing:-0.8px; color:var(--ink);
 }
-.intro-p { font-size:17px; line-height:1.75; color:var(--ink-soft); max-width:780px; margin-bottom:14px; }
+.intro-p { font-size:17px; line-height:1.7; color:var(--ink-soft); max-width:780px; margin-bottom:14px; }
 
 /* gallery */
-.gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px; gap:12px; }
+.gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px; gap:12px; margin-top:30px; }
 .gitem { position:relative; cursor:pointer; overflow:hidden; border-radius:14px; }
 .gitem img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
 .gitem:hover img { transform:scale(1.06); }
@@ -158,21 +146,17 @@ h2.stitle {
 .lb-prev:hover, .lb-next:hover { opacity:1; }
 .lb-prev { left:16px; } .lb-next { right:16px; }
 
-/* features */
-.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
-.fcards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-.fcard { background:white; padding:24px 22px; border-radius:14px; transition:transform .25s; }
-.fcard:hover { transform:translateY(-4px); }
-.fcard:nth-child(1) { background:var(--paper-yellow); }
-.fcard:nth-child(2) { background:var(--paper-sage); }
-.fcard:nth-child(3) { background:var(--paper-warm); }
-.fcard:nth-child(4) { background:var(--mustard-soft); }
-.fcard .icon { font-size:26px; margin-bottom:10px; }
-.fcard .ft { font-size:13.5px; font-weight:700; margin-bottom:6px; color:var(--ink); }
-.fcard .fd { font-size:13.5px; color:var(--ink-soft); line-height:1.55; }
-.flist { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
-.flist li { font-size:14px; display:flex; align-items:center; gap:10px; color:var(--ink-soft); }
-.flist li::before { content:"●"; color:var(--sage-dark); flex-shrink:0; font-size:7px; }
+/* feature mini-cards under gallery */
+.mini-features { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:32px; }
+.mini-fcard { padding:22px 22px; border-radius:14px; transition:transform .25s; }
+.mini-fcard:hover { transform:translateY(-3px); }
+.mini-fcard:nth-child(1) { background:var(--paper-yellow); }
+.mini-fcard:nth-child(2) { background:var(--paper-sage); }
+.mini-fcard:nth-child(3) { background:var(--paper-warm); }
+.mini-fcard:nth-child(4) { background:var(--mustard-soft); }
+.mini-fcard .icon { font-size:24px; margin-bottom:10px; }
+.mini-fcard .ft { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--ink); }
+.mini-fcard .fd { font-size:13px; color:var(--ink-soft); line-height:1.55; }
 
 /* USES */
 .uses-section { background:var(--paper-sage); }
@@ -199,21 +183,46 @@ h2.stitle {
 .not-suited { margin-top:18px; background:var(--paper-warm); border-radius:10px; padding:14px 18px; font-size:13px; color:var(--muted); line-height:1.55; }
 .not-suited strong { color:var(--ink); font-weight:600; }
 
-/* TERMS */
-.terms-section { background:var(--paper); }
-.terms-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-.tcard { padding:26px 24px; border-radius:16px; transition:transform .25s; }
-.tcard:hover { transform:translateY(-4px); }
+/* PRICE TIERS */
+.price-section { background:var(--paper); }
+.price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:30px; }
+.pcard {
+  background:white; border:2px solid var(--line); padding:30px 28px; border-radius:18px;
+  display:flex; flex-direction:column; transition:transform .25s, border-color .25s;
+}
+.pcard:hover { transform:translateY(-4px); border-color:var(--sage); }
+.pcard.featured { background:var(--ink); color:var(--paper); border-color:var(--ink); position:relative; }
+.pcard.featured::before {
+  content:"Beliebt"; position:absolute; top:-12px; left:28px;
+  background:var(--mustard); color:var(--ink); font-size:11px; font-weight:700;
+  padding:5px 12px; border-radius:999px; letter-spacing:0.5px;
+}
+.pcard .tier-label { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--sage-dark); margin-bottom:8px; }
+.pcard.featured .tier-label { color:var(--mustard); }
+.pcard .tier-h { font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:700; margin-bottom:18px; letter-spacing:-0.3px; }
+.pcard .price { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; line-height:1; margin-bottom:6px; letter-spacing:-1px; }
+.pcard .price .ppm { font-size:14px; font-weight:500; color:var(--muted); margin-left:4px; }
+.pcard.featured .price .ppm { color:rgba(253,248,238,0.6); }
+.pcard .price-desc { font-size:13px; color:var(--muted); margin-bottom:18px; }
+.pcard.featured .price-desc { color:rgba(253,248,238,0.65); }
+.pcard ul { list-style:none; margin-top:auto; padding-top:18px; border-top:1px solid var(--line); }
+.pcard.featured ul { border-top-color:rgba(253,248,238,0.15); }
+.pcard ul li { font-size:13.5px; padding:6px 0; color:var(--ink-soft); }
+.pcard.featured ul li { color:rgba(253,248,238,0.85); }
+.pcard ul li::before { content:"✓"; color:var(--sage-dark); margin-right:10px; font-weight:700; }
+.pcard.featured ul li::before { color:var(--mustard); }
+.price-note { margin-top:28px; background:var(--paper-warm); border-radius:12px; padding:16px 22px; font-size:13.5px; color:var(--ink-soft); line-height:1.65; max-width:880px; }
+.price-note strong { color:var(--ink); }
+
+/* TERMS — minimal row */
+.terms-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px; }
+.tcard { padding:22px 24px; border-radius:14px; }
 .tcard:nth-child(1) { background:var(--paper-sage); }
-.tcard:nth-child(2) { background:var(--mustard-soft); }
-.tcard:nth-child(3) { background:var(--paper-warm); }
-.tcard:nth-child(4) { background:var(--sage-soft); }
-.tcard .tlbl { font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-.tcard .tval { font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700; line-height:1.15; margin-bottom:10px; color:var(--ink); letter-spacing:-0.4px; }
-.tcard .tdesc { font-size:13.5px; line-height:1.6; color:var(--ink-soft); }
-.terms-cta { margin-top:32px; max-width:780px; font-size:15px; color:var(--ink-soft); line-height:1.7; }
-.terms-cta a { color:var(--sage-dark); border-bottom:2px solid var(--sage-soft); text-decoration:none; font-weight:600; }
-.terms-cta a:hover { border-bottom-color:var(--sage-dark); }
+.tcard:nth-child(2) { background:var(--paper-warm); }
+.tcard:nth-child(3) { background:var(--sage-soft); }
+.tcard .tlbl { font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.tcard .tval { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; line-height:1.2; margin-bottom:8px; color:var(--ink); }
+.tcard .tdesc { font-size:13px; line-height:1.55; color:var(--ink-soft); }
 
 /* LOCATION */
 .loc-section { background:var(--paper-warm); }
@@ -261,9 +270,9 @@ footer a:hover { color:var(--mustard); }
   section { padding:56px 24px; }
   .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
   .gitem.span3, .gitem.row2 { grid-column:auto; grid-row:auto; height:220px; }
-  .features-grid, .uses-grid, .loc-grid, .contact-inner { grid-template-columns:1fr; gap:36px; }
-  .fcards, .flist { grid-template-columns:1fr 1fr; }
-  .terms-grid { grid-template-columns:1fr 1fr; }
+  .mini-features, .uses-grid, .loc-grid, .contact-inner, .price-grid, .terms-row { grid-template-columns:1fr; gap:14px; }
+  .uses-grid, .loc-grid, .contact-inner { gap:36px; }
+  .price-grid { gap:16px; }
   .contact-section { padding:56px 24px; }
   footer { padding:20px 24px; flex-direction:column; gap:8px; }
 }
@@ -277,7 +286,7 @@ footer a:hover { color:var(--mustard); }
   <div class="nav-links">
     <a href="#raum" id="nav0">Saal</a>
     <a href="#nutzung" id="nav1">Nutzung</a>
-    <a href="#konditionen" id="nav2">Konditionen</a>
+    <a href="#preise" id="nav2">Preise</a>
     <a href="#kontakt" class="cta" id="nav3">Anfrage</a>
   </div>
 </nav>
@@ -297,7 +306,7 @@ footer a:hover { color:var(--mustard); }
     </div>
     <div class="hero-btns">
       <a href="#kontakt" class="btn-pri" id="btn1">Anfrage senden</a>
-      <a href="#raum" class="btn-sec" id="btn2">Saal ansehen</a>
+      <a href="#preise" class="btn-sec" id="btn2">Preise ansehen</a>
     </div>
   </div>
   <div class="hero-img">
@@ -306,12 +315,13 @@ footer a:hover { color:var(--mustard); }
   </div>
 </section>
 
+<!-- DER SAAL — combined with features -->
 <section style="background:var(--paper);" id="raum">
   <div class="section-label" id="sl0">Der Saal</div>
   <h2 class="stitle" id="st0">Hell, ruhig, vielseitig nutzbar</h2>
-  <p class="intro-p" id="rp1">Holzvert&auml;felung, W&uuml;rfelparkett, hohe Sprossenfenster und eine umlaufende Empore. Im Raum: Klavier, Beamer, St&uuml;hle. Im Geb&auml;ude: separates WC.</p>
-  <p class="intro-p" id="rp2">Geeignet f&uuml;r alles vom Tanzkurs &uuml;ber Musikunterricht bis zur Theaterprobe.</p>
-  <div class="gallery-grid" style="margin-top:36px;">
+  <p class="intro-p" id="rp1">Holzvert&auml;felung, W&uuml;rfelparkett, hohe Sprossenfenster und eine umlaufende Empore. Geeignet f&uuml;r alles vom Tanzkurs &uuml;ber Musikunterricht bis zur Theaterprobe.</p>
+
+  <div class="gallery-grid">
     <div class="gitem span3 row2" onclick="openLb(0)"><img src="saal_hauptansicht.jpg" alt="Hauptansicht"><div class="cap" id="cap0">Hauptansicht</div></div>
     <div class="gitem span3" onclick="openLb(1)"><img src="saal_innen.jpg" alt="Eingang"><div class="cap" id="cap1">Richtung Eingang</div></div>
     <div class="gitem span3" onclick="openLb(2)"><img src="saal_klavier.jpg" alt="Klavier"><div class="cap" id="cap2">Klavier</div></div>
@@ -324,34 +334,16 @@ footer a:hover { color:var(--mustard); }
     <img id="lb-img" src="" alt="">
     <div class="lb-next" onclick="lbNav(1)">&#8250;</div>
   </div>
-</section>
 
-<section style="background:var(--paper-yellow);">
-  <div class="features-grid">
-    <div>
-      <div class="section-label" id="sl1">Ausstattung</div>
-      <h2 class="stitle" id="st1">Was vorhanden ist</h2>
-      <p class="intro-p" id="fp1">Bewegungs- und unterrichtstauglich ausgestattet. Was fehlt, kann nach Absprache erg&auml;nzt werden.</p>
-      <ul class="flist" style="margin-top:18px;">
-        <li id="fl0">Ca. 60 m² Bodenfl&auml;che</li>
-        <li id="fl1">W&uuml;rfelparkett</li>
-        <li id="fl2">Klavier</li>
-        <li id="fl3">Beamer unter Empore</li>
-        <li id="fl4">St&uuml;hle vorhanden</li>
-        <li id="fl5">Separates WC im Geb&auml;ude</li>
-        <li id="fl6">Helle Sprossenfenster</li>
-        <li id="fl7">Heizung &amp; Strom inkl.</li>
-      </ul>
-    </div>
-    <div class="fcards">
-      <div class="fcard"><div class="icon">&#128208;</div><div class="ft" id="fc0t">Bewegungstaugliche Fl&auml;che</div><div class="fd" id="fc0d">Gruppen bis ca. 20 Personen</div></div>
-      <div class="fcard"><div class="icon">&#127932;</div><div class="ft" id="fc1t">Klavier vor Ort</div><div class="fd" id="fc1d">Ideal f&uuml;r Musik- und Gesangsunterricht</div></div>
-      <div class="fcard"><div class="icon">&#128704;</div><div class="ft" id="fc2t">Separates WC</div><div class="fd" id="fc2d">Im Geb&auml;ude, kurzer Weg ausserhalb des Saals</div></div>
-      <div class="fcard"><div class="icon">&#9728;&#65039;</div><div class="ft" id="fc3t">Viel Tageslicht</div><div class="fd" id="fc3d">Fenster auf zwei Seiten, ruhige Lage zum Hof</div></div>
-    </div>
+  <div class="mini-features">
+    <div class="mini-fcard"><div class="icon">&#128208;</div><div class="ft" id="fc0t">60 m² W&uuml;rfelparkett</div><div class="fd" id="fc0d">F&uuml;r Gruppen bis ca. 20 Personen</div></div>
+    <div class="mini-fcard"><div class="icon">&#127932;</div><div class="ft" id="fc1t">Klavier &amp; Beamer</div><div class="fd" id="fc1d">F&uuml;r Musik, Gesang oder Vortr&auml;ge</div></div>
+    <div class="mini-fcard"><div class="icon">&#9728;&#65039;</div><div class="ft" id="fc2t">Viel Tageslicht</div><div class="fd" id="fc2d">Sprossenfenster auf zwei Seiten</div></div>
+    <div class="mini-fcard"><div class="icon">&#128704;</div><div class="ft" id="fc3t">Separates WC</div><div class="fd" id="fc3d">Im Geb&auml;ude. NK, Heizung &amp; Strom inkl.</div></div>
   </div>
 </section>
 
+<!-- USES -->
 <section class="uses-section" id="nutzung">
   <div class="section-label" id="sl2">Nutzung</div>
   <h2 class="stitle" id="st2">F&uuml;r wen ist der Saal?</h2>
@@ -383,66 +375,81 @@ footer a:hover { color:var(--mustard); }
   </div>
 </section>
 
-<section class="terms-section" id="konditionen">
-  <div class="section-label" id="sl-terms">Konditionen</div>
-  <h2 class="stitle" id="st-terms">So funktioniert die Vermietung</h2>
-  <div class="terms-grid">
-    <div class="tcard">
-      <div class="tlbl" id="t0l">Mietart</div>
-      <div class="tval" id="t0v">Regelm&auml;ssig</div>
-      <div class="tdesc" id="t0d">Fester w&ouml;chentlicher Zeitslot, Mo&ndash;Fr nach Absprache.</div>
+<!-- PREISE / KONDITIONEN -->
+<section class="price-section" id="preise">
+  <div class="section-label" id="sl-price">Preise &amp; Konditionen</div>
+  <h2 class="stitle" id="st-price">Richtpreise nach Nutzungsintensit&auml;t</h2>
+  <p class="intro-p" id="pp-intro">Unverbindliche Richtwerte f&uuml;r regelm&auml;ssige Mieter mit festem w&ouml;chentlichem Slot. Der definitive Preis h&auml;ngt von Wochentag, Zeitfenster und Mietdauer ab.</p>
+
+  <div class="price-grid">
+    <div class="pcard">
+      <div class="tier-label" id="tier0l">Klein</div>
+      <div class="tier-h" id="tier0h">1&ndash;3 Std. pro Woche</div>
+      <div class="price"><span id="tier0p">CHF 220&ndash;380</span><span class="ppm" id="tier0ppm">/ Monat</span></div>
+      <div class="price-desc" id="tier0d">F&uuml;r einen w&ouml;chentlichen Kurs oder eine Probe.</div>
+      <ul>
+        <li id="tier0f0">Fester w&ouml;chentlicher Zeitslot</li>
+        <li id="tier0f1">Nutzung von Klavier &amp; Beamer</li>
+        <li id="tier0f2">Alles inklusive</li>
+      </ul>
     </div>
-    <div class="tcard">
-      <div class="tlbl" id="t1l">Mietpreis</div>
-      <div class="tval" id="t1v">Auf Anfrage</div>
-      <div class="tdesc" id="t1d">Preis nach Frequenz und Belegungszeit. Inkl. NK, Strom, Heizung, Reinigung.</div>
+    <div class="pcard featured">
+      <div class="tier-label" id="tier1l">Mittel</div>
+      <div class="tier-h" id="tier1h">4&ndash;8 Std. pro Woche</div>
+      <div class="price"><span id="tier1p">CHF 450&ndash;800</span><span class="ppm" id="tier1ppm">/ Monat</span></div>
+      <div class="price-desc" id="tier1d">F&uuml;r mehrere w&ouml;chentliche Kurse oder Tage.</div>
+      <ul>
+        <li id="tier1f0">Mehrere fest gebuchte Slots</li>
+        <li id="tier1f1">Nutzung von Klavier &amp; Beamer</li>
+        <li id="tier1f2">Alles inklusive</li>
+      </ul>
     </div>
-    <div class="tcard">
-      <div class="tlbl" id="t2l">Vertrag</div>
-      <div class="tval" id="t2v">Schriftlich</div>
-      <div class="tdesc" id="t2d">Schriftlicher Mietvertrag mit beidseitiger K&uuml;ndigungsfrist.</div>
-    </div>
-    <div class="tcard">
-      <div class="tlbl" id="t3l">Verf&uuml;gbar</div>
-      <div class="tval" id="t3v">Ab sofort</div>
-      <div class="tdesc" id="t3d">Frei zur Belegung. Besichtigung nach Vereinbarung.</div>
+    <div class="pcard">
+      <div class="tier-label" id="tier2l">Studio</div>
+      <div class="tier-h" id="tier2h">Mehr als 8 Std. pro Woche</div>
+      <div class="price"><span id="tier2p">ab CHF 900</span><span class="ppm" id="tier2ppm">/ Monat</span></div>
+      <div class="price-desc" id="tier2d">Studio-Nutzung mit Schwerpunkt im Saal.</div>
+      <ul>
+        <li id="tier2f0">Pauschale auf Anfrage</li>
+        <li id="tier2f1">Exklusive Slots m&ouml;glich</li>
+        <li id="tier2f2">Alles inklusive</li>
+      </ul>
     </div>
   </div>
-  <p class="terms-cta" id="terms-cta">F&uuml;r ein konkretes Angebot ben&ouml;tigen wir Art der Nutzung, gew&uuml;nschte Wochentage und Zeitfenster sowie Frequenz. <a href="#kontakt" id="terms-cta-link">Anfrage stellen &rarr;</a></p>
+
+  <div class="price-note" id="price-note">
+    <strong>Alle Preise inkl.</strong> Nebenkosten, Strom, Heizung und Reinigung. F&uuml;r Anbieter mit Angeboten f&uuml;r Kinder, Jugendliche oder im Bereich Bewegung/Sport/Kultur sind verg&uuml;nstigte Konditionen m&ouml;glich.
+  </div>
+
+  <div class="terms-row">
+    <div class="tcard"><div class="tlbl" id="t0l">Vertrag</div><div class="tval" id="t0v">Schriftlich</div><div class="tdesc" id="t0d">Mietvertrag mit beidseitiger K&uuml;ndigungsfrist.</div></div>
+    <div class="tcard"><div class="tlbl" id="t1l">Verf&uuml;gbar</div><div class="tval" id="t1v">Ab sofort</div><div class="tdesc" id="t1d">Besichtigung nach Vereinbarung.</div></div>
+    <div class="tcard"><div class="tlbl" id="t2l">Probemonat</div><div class="tval" id="t2v">M&ouml;glich</div><div class="tdesc" id="t2d">Auf Wunsch ein Monat unverbindlich testen.</div></div>
+  </div>
 </section>
 
+<!-- LAGE -->
 <section class="loc-section" id="lage">
   <div class="loc-grid">
     <div>
       <div class="section-label" id="sl3">Lage</div>
       <h2 class="stitle" id="st3">Mitten in Bern</h2>
       <p class="intro-p" id="lp1">Brunnmattstrasse 50, 3007 Bern. Tramstation Cecilienplatz direkt nebenan, Bern-Zentrum in rund 10 Minuten. Rund um das Haus Parkpl&auml;tze in der Blauen Zone.</p>
-      <p class="intro-p" id="lp2">Weitere Angaben zu Anreise und Quartier:</p>
-      <p style="margin-top:8px;"><a href="index inkl. Womiete.html" style="font-size:14px;color:var(--sage-dark);text-decoration:none;font-weight:600;border-bottom:2px solid var(--sage-soft);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
+      <p style="margin-top:14px;"><a href="index inkl. Womiete.html" style="font-size:14px;color:var(--sage-dark);text-decoration:none;font-weight:600;border-bottom:2px solid var(--sage-soft);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
     </div>
     <div class="loc-cards">
-      <div class="loc-card">
-        <div class="lct" id="lc0t">&#128651; &Ouml;ffentlicher Verkehr</div>
-        <div class="lcv" id="lc0v">Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.</div>
-      </div>
-      <div class="loc-card">
-        <div class="lct" id="lc1t">&#128663; Parkieren</div>
-        <div class="lcv" id="lc1v">Parkpl&auml;tze in der Blauen Zone rund um das Haus.</div>
-      </div>
-      <div class="loc-card">
-        <div class="lct" id="lc2t">&#127968; Adresse</div>
-        <div class="lcv" id="lc2v">Brunnmattstrasse 50<br>3007 Bern, Schweiz</div>
-      </div>
+      <div class="loc-card"><div class="lct" id="lc0t">&#128651; &Ouml;ffentlicher Verkehr</div><div class="lcv" id="lc0v">Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.</div></div>
+      <div class="loc-card"><div class="lct" id="lc1t">&#128663; Parkieren</div><div class="lcv" id="lc1v">Parkpl&auml;tze in der Blauen Zone rund um das Haus.</div></div>
+      <div class="loc-card"><div class="lct" id="lc2t">&#127968; Adresse</div><div class="lcv" id="lc2v">Brunnmattstrasse 50<br>3007 Bern, Schweiz</div></div>
     </div>
   </div>
 </section>
 
 <section style="background:white;padding:0;">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.0!2d7.4241!3d46.9431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39b0d5b2a3a3%3A0x0!2sBrunnmattstrasse+50%2C+3007+Bern!5e0!3m2!1sde!2sch!4v1234567890"
-    width="100%" height="340" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Brunnmattstrasse 50, Bern"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2724.0!2d7.4241!3d46.9431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478e39b0d5b2a3a3%3A0x0!2sBrunnmattstrasse+50%2C+3007+Bern!5e0!3m2!1sde!2sch!4v1234567890" width="100%" height="340" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Brunnmattstrasse 50, Bern"></iframe>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-section" id="kontakt">
   <div class="contact-inner">
     <div>
@@ -482,23 +489,19 @@ document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLb()
 
 var T = {
   de: {
-    langBtn:"EN", nav0:"Saal", nav1:"Nutzung", nav2:"Konditionen", nav3:"Anfrage",
+    langBtn:"EN", nav0:"Saal", nav1:"Nutzung", nav2:"Preise", nav3:"Anfrage",
     eyebrow:"Saal mieten · Bern",
     heroTitle:'Suchst du einen Raum f&uuml;r deine <span class="hl-y">Tanz-, Musik-</span> oder <span class="hl-s">Gesangsstunden</span> in Bern?',
     heroSub:"Heller Saal mit Holzparkett und Klavier – mitten in Bern. Für deinen regelmässigen Kurs, deine Probe oder dein Studio.",
     f0:"60 m²", f1:"Klavier", f2:"Holzparkett", f3:"Mo–Fr nach Absprache",
-    btn1:"Anfrage senden", btn2:"Saal ansehen",
+    btn1:"Anfrage senden", btn2:"Preise ansehen",
     sl0:"Der Saal", st0:"Hell, ruhig, vielseitig nutzbar",
-    rp1:"Holzvertäfelung, Würfelparkett, hohe Sprossenfenster und eine umlaufende Empore. Im Raum: Klavier, Beamer, Stühle. Im Gebäude: separates WC.",
-    rp2:"Geeignet für alles vom Tanzkurs über Musikunterricht bis zur Theaterprobe.",
+    rp1:"Holzvertäfelung, Würfelparkett, hohe Sprossenfenster und eine umlaufende Empore. Geeignet für alles vom Tanzkurs über Musikunterricht bis zur Theaterprobe.",
     cap0:"Hauptansicht", cap1:"Richtung Eingang", cap2:"Klavier", cap3:"Empore", cap4:"Fensterseite",
-    sl1:"Ausstattung", st1:"Was vorhanden ist",
-    fp1:"Bewegungs- und unterrichtstauglich ausgestattet. Was fehlt, kann nach Absprache ergänzt werden.",
-    fl:["Ca. 60 m² Bodenfläche","Würfelparkett","Klavier","Beamer unter Empore","Stühle vorhanden","Separates WC im Gebäude","Helle Sprossenfenster","Heizung & Strom inkl."],
-    fc0t:"Bewegungstaugliche Fläche", fc0d:"Gruppen bis ca. 20 Personen",
-    fc1t:"Klavier vor Ort", fc1d:"Ideal für Musik- und Gesangsunterricht",
-    fc2t:"Separates WC", fc2d:"Im Gebäude, kurzer Weg ausserhalb des Saals",
-    fc3t:"Viel Tageslicht", fc3d:"Fenster auf zwei Seiten, ruhige Lage zum Hof",
+    fc0t:"60 m² Würfelparkett", fc0d:"Für Gruppen bis ca. 20 Personen",
+    fc1t:"Klavier & Beamer", fc1d:"Für Musik, Gesang oder Vorträge",
+    fc2t:"Viel Tageslicht", fc2d:"Sprossenfenster auf zwei Seiten",
+    fc3t:"Separates WC", fc3d:"Im Gebäude. NK, Heizung & Strom inkl.",
     sl2:"Nutzung", st2:"Für wen ist der Saal?",
     up1:"Wir suchen <strong>regelmässige Mieter</strong> mit festem wöchentlichem Zeitslot zwischen Montag und Freitag – bevorzugt aus den Bereichen <strong>Bewegung, Sport und Kultur</strong> sowie für Angebote mit Kindern und Jugendlichen.",
     upPriT:"Bevorzugte Mieter",
@@ -507,16 +510,20 @@ var T = {
     upBizT:"Ebenfalls geeignet",
     upBizP:"Auch andere gewerbliche Nutzungen mit regelmässigem Bedarf, sofern sie zur Lage und Akustik des Saals passen.",
     notSuited:'<strong>Nicht geeignet:</strong> dauerhafte Büronutzung, gewerbliches Lager, laute Abendveranstaltungen.',
-    slTerms:"Konditionen", stTerms:"So funktioniert die Vermietung",
-    t0l:"Mietart", t0v:"Regelmässig", t0d:"Fester wöchentlicher Zeitslot, Mo–Fr nach Absprache.",
-    t1l:"Mietpreis", t1v:"Auf Anfrage", t1d:"Preis nach Frequenz und Belegungszeit. Inkl. NK, Strom, Heizung, Reinigung.",
-    t2l:"Vertrag", t2v:"Schriftlich", t2d:"Schriftlicher Mietvertrag mit beidseitiger Kündigungsfrist.",
-    t3l:"Verfügbar", t3v:"Ab sofort", t3d:"Frei zur Belegung. Besichtigung nach Vereinbarung.",
-    termsCta:"Für ein konkretes Angebot benötigen wir Art der Nutzung, gewünschte Wochentage und Zeitfenster sowie Frequenz. ",
-    termsCtaLink:"Anfrage stellen →",
+    slPrice:"Preise & Konditionen", stPrice:"Richtpreise nach Nutzungsintensität",
+    ppIntro:"Unverbindliche Richtwerte für regelmässige Mieter mit festem wöchentlichem Slot. Der definitive Preis hängt von Wochentag, Zeitfenster und Mietdauer ab.",
+    tier0l:"Klein", tier0h:"1–3 Std. pro Woche", tier0p:"CHF 220–380", tier0ppm:"/ Monat", tier0d:"Für einen wöchentlichen Kurs oder eine Probe.",
+    tier0f:["Fester wöchentlicher Zeitslot","Nutzung von Klavier & Beamer","Alles inklusive"],
+    tier1l:"Mittel", tier1h:"4–8 Std. pro Woche", tier1p:"CHF 450–800", tier1ppm:"/ Monat", tier1d:"Für mehrere wöchentliche Kurse oder Tage.",
+    tier1f:["Mehrere fest gebuchte Slots","Nutzung von Klavier & Beamer","Alles inklusive"],
+    tier2l:"Studio", tier2h:"Mehr als 8 Std. pro Woche", tier2p:"ab CHF 900", tier2ppm:"/ Monat", tier2d:"Studio-Nutzung mit Schwerpunkt im Saal.",
+    tier2f:["Pauschale auf Anfrage","Exklusive Slots möglich","Alles inklusive"],
+    priceNote:"<strong>Alle Preise inkl.</strong> Nebenkosten, Strom, Heizung und Reinigung. Für Anbieter mit Angeboten für Kinder, Jugendliche oder im Bereich Bewegung/Sport/Kultur sind vergünstigte Konditionen möglich.",
+    t0l:"Vertrag", t0v:"Schriftlich", t0d:"Mietvertrag mit beidseitiger Kündigungsfrist.",
+    t1l:"Verfügbar", t1v:"Ab sofort", t1d:"Besichtigung nach Vereinbarung.",
+    t2l:"Probemonat", t2v:"Möglich", t2d:"Auf Wunsch ein Monat unverbindlich testen.",
     sl3:"Lage", st3:"Mitten in Bern",
     lp1:"Brunnmattstrasse 50, 3007 Bern. Tramstation Cecilienplatz direkt nebenan, Bern-Zentrum in rund 10 Minuten. Rund um das Haus Parkplätze in der Blauen Zone.",
-    lp2:"Weitere Angaben zu Anreise und Quartier:",
     lpLink:"Brunnmatt 50 – Wohnung & Anreise →",
     lc0t:"🚊 Öffentlicher Verkehr", lc0v:"Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.",
     lc1t:"🚗 Parkieren", lc1v:"Parkplätze in der Blauen Zone rund um das Haus.",
@@ -528,23 +535,19 @@ var T = {
     cd0l:"E-Mail", cd1l:"Adresse", footerMid:"Saal zur Wochenmiete"
   },
   en: {
-    langBtn:"DE", nav0:"Hall", nav1:"Use", nav2:"Terms", nav3:"Enquire",
+    langBtn:"DE", nav0:"Hall", nav1:"Use", nav2:"Prices", nav3:"Enquire",
     eyebrow:"Hall for rent · Bern",
     heroTitle:'Looking for a space for your <span class="hl-y">dance, music</span> or <span class="hl-s">singing classes</span> in Bern?',
     heroSub:"Bright hall with wooden parquet and a piano – right in central Bern. For your regular weekly class, rehearsal or studio.",
     f0:"60 m²", f1:"Piano", f2:"Wooden parquet", f3:"Mon–Fri by arrangement",
-    btn1:"Send enquiry", btn2:"See the hall",
+    btn1:"Send enquiry", btn2:"See prices",
     sl0:"The Hall", st0:"Bright, calm, versatile",
-    rp1:"Wood panelling, block parquet, tall lattice windows and an encircling gallery. In the room: piano, projector, chairs. In the building: a separate WC.",
-    rp2:"Suitable for anything from dance classes to music lessons to theatre rehearsals.",
+    rp1:"Wood panelling, block parquet, tall lattice windows and an encircling gallery. Suitable for anything from dance classes to music lessons to theatre rehearsals.",
     cap0:"Main view", cap1:"Toward the entrance", cap2:"Piano", cap3:"Gallery", cap4:"Window side",
-    sl1:"Features", st1:"What's there",
-    fp1:"Equipped for movement and teaching. Anything missing can be added by arrangement.",
-    fl:["About 60 m² floor area","Block parquet","Piano","Projector below gallery","Chairs available","Separate WC in the building","Tall windows","Heating & power incl."],
-    fc0t:"Movement-ready floor", fc0d:"Groups up to ~20 people",
-    fc1t:"Piano on site", fc1d:"Ideal for music and singing lessons",
-    fc2t:"Separate WC", fc2d:"In the building, short way outside the hall",
-    fc3t:"Plenty of daylight", fc3d:"Windows on two sides, quiet courtyard exposure",
+    fc0t:"60 m² block parquet", fc0d:"For groups up to ~20 people",
+    fc1t:"Piano & projector", fc1d:"For music, singing or talks",
+    fc2t:"Plenty of daylight", fc2d:"Tall windows on two sides",
+    fc3t:"Separate WC", fc3d:"In the building. Utilities, heat & power incl.",
     sl2:"Use", st2:"Who is the hall for?",
     up1:"We're looking for <strong>regular tenants</strong> with a fixed weekly time slot Monday to Friday – preferably from <strong>movement, sport and culture</strong>, or with offerings for children and teenagers.",
     upPriT:"Preferred tenants",
@@ -553,16 +556,20 @@ var T = {
     upBizT:"Also suitable",
     upBizP:"Other commercial uses with regular demand are welcome too, if they fit the location and acoustics.",
     notSuited:'<strong>Not suitable for:</strong> permanent office use, storage, loud evening events.',
-    slTerms:"Terms", stTerms:"How the rental works",
-    t0l:"Type", t0v:"Regular", t0d:"Fixed weekly time slot, Mon–Fri by arrangement.",
-    t1l:"Price", t1v:"On request", t1d:"Price depending on frequency and duration. Incl. utilities, electricity, heating, cleaning.",
-    t2l:"Contract", t2v:"Written", t2d:"Written rental agreement with mutual notice period.",
-    t3l:"Available", t3v:"From now", t3d:"Available immediately. Viewings by appointment.",
-    termsCta:"For a concrete offer we need the type of use, desired weekdays, time slots and frequency. ",
-    termsCtaLink:"Send enquiry →",
+    slPrice:"Prices & terms", stPrice:"Indicative prices by usage",
+    ppIntro:"Non-binding indicative rates for regular tenants with a fixed weekly slot. The final price depends on weekday, time slot and rental duration.",
+    tier0l:"Small", tier0h:"1–3 hrs per week", tier0p:"CHF 220–380", tier0ppm:"/ month", tier0d:"For one weekly class or rehearsal.",
+    tier0f:["Fixed weekly time slot","Use of piano & projector","All inclusive"],
+    tier1l:"Medium", tier1h:"4–8 hrs per week", tier1p:"CHF 450–800", tier1ppm:"/ month", tier1d:"For several weekly classes or days.",
+    tier1f:["Several fixed slots","Use of piano & projector","All inclusive"],
+    tier2l:"Studio", tier2h:"More than 8 hrs per week", tier2p:"from CHF 900", tier2ppm:"/ month", tier2d:"Studio-style use focused in the hall.",
+    tier2f:["Custom package on request","Exclusive slots possible","All inclusive"],
+    priceNote:"<strong>All prices incl.</strong> utilities, electricity, heating and cleaning. Discounted rates are possible for providers working with children, teenagers, or in movement/sport/culture.",
+    t0l:"Contract", t0v:"Written", t0d:"Rental agreement with mutual notice period.",
+    t1l:"Available", t1v:"From now", t1d:"Viewings by appointment.",
+    t2l:"Trial month", t2v:"Possible", t2d:"One month trial without commitment on request.",
     sl3:"Location", st3:"Central Bern",
     lp1:"Brunnmattstrasse 50, 3007 Bern. Cecilienplatz tram stop right next door, Bern centre about 10 minutes away. Blue-zone parking around the building.",
-    lp2:"More on access and the neighbourhood:",
     lpLink:"Brunnmatt 50 – Apartment & Access →",
     lc0t:"🚊 Public transport", lc0v:"Cecilienplatz tram stop right next door. Bern centre in 10 minutes.",
     lc1t:"🚗 Parking", lc1v:"Blue-zone parking around the building.",
@@ -585,11 +592,8 @@ function toggleLang() {
   setEl("hero-title", t.heroTitle, true); setEl("hero-sub", t.heroSub);
   setEl("f0", t.f0); setEl("f1", t.f1); setEl("f2", t.f2); setEl("f3", t.f3);
   setEl("btn1", t.btn1); setEl("btn2", t.btn2);
-  setEl("sl0", t.sl0); setEl("st0", t.st0);
-  setEl("rp1", t.rp1); setEl("rp2", t.rp2);
+  setEl("sl0", t.sl0); setEl("st0", t.st0); setEl("rp1", t.rp1);
   setEl("cap0", t.cap0); setEl("cap1", t.cap1); setEl("cap2", t.cap2); setEl("cap3", t.cap3); setEl("cap4", t.cap4);
-  setEl("sl1", t.sl1); setEl("st1", t.st1); setEl("fp1", t.fp1);
-  for (var i=0; i<8; i++) setEl("fl"+i, t.fl[i]);
   setEl("fc0t", t.fc0t); setEl("fc0d", t.fc0d);
   setEl("fc1t", t.fc1t); setEl("fc1d", t.fc1d);
   setEl("fc2t", t.fc2t); setEl("fc2d", t.fc2d);
@@ -599,15 +603,18 @@ function toggleLang() {
   for (var j=0; j<9; j++) setEl("up-li"+j, t.upLi[j]);
   setEl("up-biz-t", t.upBizT); setEl("up-biz-p", t.upBizP);
   setEl("not-suited", t.notSuited, true);
-  setEl("sl-terms", t.slTerms); setEl("st-terms", t.stTerms);
+  setEl("sl-price", t.slPrice); setEl("st-price", t.stPrice); setEl("pp-intro", t.ppIntro);
+  setEl("tier0l", t.tier0l); setEl("tier0h", t.tier0h); setEl("tier0p", t.tier0p); setEl("tier0ppm", t.tier0ppm); setEl("tier0d", t.tier0d);
+  for (var i=0; i<3; i++) setEl("tier0f"+i, t.tier0f[i]);
+  setEl("tier1l", t.tier1l); setEl("tier1h", t.tier1h); setEl("tier1p", t.tier1p); setEl("tier1ppm", t.tier1ppm); setEl("tier1d", t.tier1d);
+  for (var i2=0; i2<3; i2++) setEl("tier1f"+i2, t.tier1f[i2]);
+  setEl("tier2l", t.tier2l); setEl("tier2h", t.tier2h); setEl("tier2p", t.tier2p); setEl("tier2ppm", t.tier2ppm); setEl("tier2d", t.tier2d);
+  for (var i3=0; i3<3; i3++) setEl("tier2f"+i3, t.tier2f[i3]);
+  setEl("price-note", t.priceNote, true);
   setEl("t0l", t.t0l); setEl("t0v", t.t0v); setEl("t0d", t.t0d);
   setEl("t1l", t.t1l); setEl("t1v", t.t1v); setEl("t1d", t.t1d);
   setEl("t2l", t.t2l); setEl("t2v", t.t2v); setEl("t2d", t.t2d);
-  setEl("t3l", t.t3l); setEl("t3v", t.t3v); setEl("t3d", t.t3d);
-  var ctaEl = document.getElementById("terms-cta");
-  if (ctaEl) ctaEl.innerHTML = t.termsCta + '<a href="#kontakt" id="terms-cta-link">'+t.termsCtaLink+'</a>';
-  setEl("sl3", t.sl3); setEl("st3", t.st3);
-  setEl("lp1", t.lp1); setEl("lp2", t.lp2); setEl("lp-link", t.lpLink);
+  setEl("sl3", t.sl3); setEl("st3", t.st3); setEl("lp1", t.lp1); setEl("lp-link", t.lpLink);
   setEl("lc0t", t.lc0t); setEl("lc0v", t.lc0v);
   setEl("lc1t", t.lc1t); setEl("lc1v", t.lc1v);
   setEl("lc2t", t.lc2t); setEl("lc2v", t.lc2v, true);
