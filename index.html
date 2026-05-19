@@ -90,11 +90,12 @@ nav {
 .hero {
   min-height:auto; position:relative; overflow:hidden;
   display:grid; grid-template-columns:1.1fr 0.9fr;
+  align-items:start;
   background:var(--paper);
-  padding-top:77px;
+  margin-top:77px; /* push below announce bar + nav */
 }
 .hero-content {
-  padding:56px 70px 64px; display:flex; flex-direction:column; justify-content:center;
+  padding:56px 70px 64px; display:flex; flex-direction:column; justify-content:flex-start;
   position:relative;
 }
 .blob { position:absolute; border-radius:50%; z-index:0; pointer-events:none; filter:blur(10px); }
@@ -425,7 +426,7 @@ footer a:hover { color:var(--pink); }
 
 @media(max-width:980px){
   nav { padding:14px 20px; } .nav-links { display:none; }
-  .hero { grid-template-columns:1fr; min-height:auto; padding-top:77px; }
+  .hero { grid-template-columns:1fr; min-height:auto; margin-top:77px; }
   .hero-content { padding:40px 24px 44px; }
   .hero-img { height:300px; max-height:300px; }
   .hero-img::after { width:90px; height:90px; top:20px; right:20px; }
