@@ -8,42 +8,83 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #1d2820;
-  --ink-soft: #3a4838;
-  --paper: #fdf8ee;
-  --paper-sage: #ecf1e3;
-  --paper-yellow: #fdf1cf;
-  --paper-warm: #f7eedb;
-  --sage: #7d9b76;
-  --sage-dark: #4a6f51;
-  --sage-soft: #d6e2cf;
-  --mustard: #e8b54a;
-  --mustard-dark: #c8951e;
-  --mustard-soft: #f9e6a8;
-  --terracotta: #c8674e;
-  --muted: #7a7565;
-  --line: #e8e0cf;
+  --ink: #0f1117;
+  --ink-soft: #3d3f4e;
+  --paper: #f7f8ff;
+  --paper-2: #ffffff;
+  --blue: #3b7fff;
+  --blue-dark: #1d5fdd;
+  --blue-soft: #dceaff;
+  --blue-pale: #eef4ff;
+  --pink: #e8417a;
+  --pink-dark: #c42860;
+  --pink-soft: #fce0eb;
+  --pink-pale: #fef0f5;
+  --yellow: #ffd44a;
+  --yellow-dark: #e6b800;
+  --yellow-soft: #fff4c2;
+  --green: #2dc97a;
+  --green-dark: #1aaa60;
+  --green-soft: #d4f5e5;
+  --muted: #8a8fa8;
+  --line: #e4e6f0;
+  --line-soft: #f0f2f8;
+  /* keep old aliases for JS-translated sections that don't change */
+  --sage-dark: var(--blue-dark);
+  --sage-soft: var(--blue-soft);
+  --mustard: var(--yellow);
+  --mustard-soft: var(--yellow-soft);
+  --paper-warm: var(--pink-pale);
+  --paper-sage: var(--blue-pale);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); font-weight:400; }
 
+/* ANNOUNCEMENT BAR */
+.announce-bar {
+  background:linear-gradient(90deg, var(--pink) 0%, var(--blue) 50%, var(--green) 100%);
+  color:white; text-align:center; font-size:12.5px; font-weight:700; padding:9px 20px;
+  letter-spacing:0.3px; position:relative; z-index:101; overflow:hidden;
+}
+.announce-bar::before {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  animation:shimmer 3s infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+.announce-bar span { margin:0 14px; }
+
+/* NAV */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(253,248,238,0.94); backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background:rgba(247,248,255,0.95); backdrop-filter:blur(14px);
+  border-bottom:1.5px solid var(--line);
   padding:14px 48px;
   display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
 }
-.nav-logo { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; letter-spacing:-0.5px; }
-.nav-logo span { color:var(--sage-dark); }
+.nav-logo {
+  font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; letter-spacing:-0.5px;
+}
+.nav-logo span {
+  background:linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
 .nav-links { display:flex; gap:30px; justify-content:flex-end; align-items:center; }
 .nav-links a { font-size:13.5px; font-weight:500; color:var(--ink); text-decoration:none; transition:color .2s; }
-.nav-links a:hover, .nav-links a.cta:hover { color:var(--sage-dark); }
-.nav-links .cta { background:var(--ink); color:var(--paper)!important; padding:10px 22px; border-radius:999px; font-weight:600; }
-.nav-links .cta:hover { background:var(--sage-dark); color:white!important; }
-#lang-btn { background:none; border:1.5px solid var(--line); padding:8px 16px; font-size:12px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; color:var(--ink); border-radius:999px; transition:all .2s; }
-#lang-btn:hover { border-color:var(--sage-dark); color:var(--sage-dark); }
+.nav-links a:hover { color:var(--blue); }
+.nav-links .cta {
+  background:linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+  color:white!important; padding:10px 22px; border-radius:999px; font-weight:700;
+  box-shadow:0 4px 14px rgba(59,127,255,0.35);
+}
+.nav-links .cta:hover { opacity:0.88; transform:translateY(-1px); }
+#lang-btn {
+  background:none; border:1.5px solid var(--line); padding:8px 16px;
+  font-size:12px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  color:var(--ink); border-radius:999px; transition:all .2s;
+}
+#lang-btn:hover { border-color:var(--blue); color:var(--blue); }
 
 /* HERO */
 .hero {
@@ -52,58 +93,94 @@ nav {
   background:var(--paper);
 }
 .hero-content {
-  padding:140px 70px 80px; display:flex; flex-direction:column; justify-content:center;
+  padding:180px 70px 80px; display:flex; flex-direction:column; justify-content:center;
   position:relative;
 }
-.blob { position:absolute; border-radius:50%; z-index:0; pointer-events:none; }
-.blob-y { width:280px; height:280px; background:var(--mustard-soft); top:80px; left:-100px; opacity:0.6; }
-.blob-s { width:200px; height:200px; background:var(--sage-soft); bottom:50px; left:340px; opacity:0.5; }
+.blob { position:absolute; border-radius:50%; z-index:0; pointer-events:none; filter:blur(10px); }
+.blob-y {
+  width:340px; height:340px;
+  background:radial-gradient(circle, rgba(255,212,74,0.7) 0%, rgba(255,212,74,0.1) 70%);
+  top:50px; left:-140px;
+}
+.blob-s {
+  width:260px; height:260px;
+  background:radial-gradient(circle, rgba(59,127,255,0.5) 0%, rgba(59,127,255,0.05) 70%);
+  bottom:80px; left:300px;
+}
+.blob-c {
+  width:200px; height:200px;
+  background:radial-gradient(circle, rgba(232,65,122,0.45) 0%, rgba(232,65,122,0.0) 70%);
+  top:180px; right:-20px;
+}
 .hero-content > * { position:relative; z-index:1; }
 
 .eyebrow {
   display:inline-flex; align-items:center; gap:8px;
-  font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
-  color:var(--sage-dark); margin-bottom:24px;
-  background:var(--sage-soft); padding:7px 16px; border-radius:999px; width:fit-content;
+  font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:24px;
+  background:var(--blue-pale); border:1.5px solid var(--blue-soft);
+  padding:7px 16px; border-radius:999px; width:fit-content;
 }
-.eyebrow::before { content:""; width:6px; height:6px; background:var(--sage-dark); border-radius:50%; }
+.eyebrow::before { content:""; width:6px; height:6px; background:var(--blue); border-radius:50%; }
 
 .hero h1 {
   font-family:'Space Grotesk',sans-serif; font-size:clamp(36px,4.2vw,58px);
   font-weight:700; line-height:1.05; margin-bottom:24px; letter-spacing:-1.2px;
   color:var(--ink);
 }
-.hero h1 .hl-y { background:linear-gradient(transparent 65%, var(--mustard-soft) 65%); padding:0 4px; }
-.hero h1 .hl-s { color:var(--sage-dark); }
-
-.hero-sub {
-  font-size:17px; color:var(--ink-soft); line-height:1.65; max-width:480px; margin-bottom:30px;
+.hero h1 .hl-y {
+  background:linear-gradient(transparent 58%, var(--yellow) 58%);
+  padding:0 4px;
 }
+.hero h1 .hl-s {
+  background:linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.hero-sub { font-size:17px; color:var(--ink-soft); line-height:1.65; max-width:480px; margin-bottom:30px; }
 .hero-facts { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:34px; }
 .fact {
-  background:white; padding:8px 16px; border-radius:999px; font-size:13px; font-weight:500;
-  color:var(--ink); border:1px solid var(--line);
+  background:var(--paper-2); padding:8px 16px; border-radius:999px; font-size:13px; font-weight:600;
+  color:var(--ink); border:1.5px solid var(--line);
 }
-.fact.y { background:var(--mustard); border-color:var(--mustard); color:var(--ink); font-weight:600; }
-.fact.s { background:var(--sage); border-color:var(--sage); color:white; font-weight:600; }
+.fact.y { background:var(--yellow); border-color:var(--yellow); color:var(--ink); }
+.fact.s { background:var(--blue); border-color:var(--blue); color:white; }
+.fact.p { background:var(--pink); border-color:var(--pink); color:white; }
+.fact.g { background:var(--green); border-color:var(--green); color:white; }
 
 .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
-.btn-pri { background:var(--ink); color:var(--paper); padding:15px 30px; font-size:14px; font-weight:600; text-decoration:none; border-radius:999px; transition:all .25s; }
-.btn-pri:hover { background:var(--sage-dark); transform:translateY(-2px); }
-.btn-sec { border:1.5px solid var(--ink); color:var(--ink); padding:15px 30px; font-size:14px; font-weight:500; text-decoration:none; border-radius:999px; transition:all .25s; background:transparent; }
+.btn-pri {
+  background:linear-gradient(135deg, var(--blue) 0%, var(--pink) 100%);
+  color:white; padding:15px 32px; font-size:14px; font-weight:700; text-decoration:none;
+  border-radius:999px; transition:all .25s;
+  box-shadow:0 6px 20px rgba(59,127,255,0.35);
+}
+.btn-pri:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(59,127,255,0.45); }
+.btn-sec {
+  border:2px solid var(--ink); color:var(--ink); padding:15px 30px; font-size:14px;
+  font-weight:600; text-decoration:none; border-radius:999px; transition:all .25s; background:transparent;
+}
 .btn-sec:hover { background:var(--ink); color:var(--paper); }
 
 .hero-img { position:relative; overflow:hidden; }
-.hero-img img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:brightness(1.08) saturate(1.18) contrast(1.04);
+}
+.hero-img::before {
+  content:""; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to right, rgba(247,248,255,0.15) 0%, transparent 30%);
+}
 .hero-img::after {
   content:""; position:absolute; top:30px; right:30px;
   width:120px; height:120px; border-radius:50%;
-  background:var(--mustard); z-index:2;
+  background:linear-gradient(135deg, var(--pink) 0%, var(--blue) 100%);
+  z-index:2; opacity:0.92;
 }
 .hero-stamp {
   position:absolute; top:65px; right:65px; z-index:3;
   font-family:'Space Grotesk',sans-serif; font-weight:700;
-  text-align:center; color:var(--ink); line-height:1;
+  text-align:center; color:white; line-height:1;
 }
 .hero-stamp .num { font-size:34px; }
 .hero-stamp .unit { font-size:12px; letter-spacing:1px; text-transform:uppercase; margin-top:4px; display:block; }
@@ -112,11 +189,12 @@ nav {
 section { padding:90px 80px; }
 .section-label {
   display:inline-flex; align-items:center; gap:8px;
-  font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
-  color:var(--sage-dark); margin-bottom:18px;
-  background:var(--sage-soft); padding:6px 14px; border-radius:999px;
+  font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:18px;
+  background:var(--blue-pale); border:1.5px solid var(--blue-soft);
+  padding:6px 14px; border-radius:999px;
 }
-.section-label::before { content:""; width:5px; height:5px; background:var(--sage-dark); border-radius:50%; }
+.section-label::before { content:""; width:5px; height:5px; background:var(--blue); border-radius:50%; }
 h2.stitle {
   font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,3.2vw,42px);
   font-weight:700; margin-bottom:24px; line-height:1.1; letter-spacing:-0.8px; color:var(--ink);
@@ -124,20 +202,26 @@ h2.stitle {
 .intro-p { font-size:17px; line-height:1.7; color:var(--ink-soft); max-width:780px; margin-bottom:14px; }
 
 /* gallery */
-.gallery-grid { display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px; gap:12px; margin-top:30px; }
-.gitem { position:relative; cursor:pointer; overflow:hidden; border-radius:14px; }
-.gitem img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
-.gitem:hover img { transform:scale(1.06); }
+.gallery-grid {
+  display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:240px 240px;
+  gap:10px; margin-top:30px; border-radius:20px; overflow:hidden;
+}
+.gitem { position:relative; cursor:pointer; overflow:hidden; }
+.gitem img {
+  width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s;
+  filter:brightness(1.06) saturate(1.14) contrast(1.04);
+}
+.gitem:hover img { transform:scale(1.07); }
 .gitem .cap {
   position:absolute; bottom:12px; left:14px;
-  background:rgba(29,40,32,0.9); color:white; font-size:11.5px; font-weight:600;
+  background:rgba(15,17,23,0.88); color:white; font-size:11.5px; font-weight:600;
   padding:6px 12px; border-radius:999px; opacity:0; transform:translateY(8px); transition:all .3s;
 }
 .gitem:hover .cap { opacity:1; transform:translateY(0); }
 .gitem.span3 { grid-column:span 3; }
 .gitem.row2 { grid-row:span 2; }
 
-.lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.94); z-index:1000; align-items:center; justify-content:center; }
+.lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.96); z-index:1000; align-items:center; justify-content:center; }
 .lb-overlay.active { display:flex; }
 .lb-overlay img { max-width:92vw; max-height:92vh; object-fit:contain; border-radius:8px; }
 .lb-close { position:absolute; top:24px; right:32px; color:white; font-size:32px; cursor:pointer; opacity:0.7; }
@@ -146,123 +230,198 @@ h2.stitle {
 .lb-prev:hover, .lb-next:hover { opacity:1; }
 .lb-prev { left:16px; } .lb-next { right:16px; }
 
-/* feature mini-cards under gallery */
+/* feature mini-cards */
 .mini-features { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:32px; }
-.mini-fcard { padding:22px 22px; border-radius:14px; transition:transform .25s; }
-.mini-fcard:hover { transform:translateY(-3px); }
-.mini-fcard:nth-child(1) { background:var(--paper-yellow); }
-.mini-fcard:nth-child(2) { background:var(--paper-sage); }
-.mini-fcard:nth-child(3) { background:var(--paper-warm); }
-.mini-fcard:nth-child(4) { background:var(--mustard-soft); }
-.mini-fcard .icon { font-size:24px; margin-bottom:10px; }
+.mini-fcard {
+  padding:24px 22px; border-radius:18px; transition:transform .25s, box-shadow .25s;
+  border:1.5px solid transparent;
+}
+.mini-fcard:hover { transform:translateY(-5px); box-shadow:0 12px 30px rgba(0,0,0,0.08); }
+.mini-fcard:nth-child(1) { background:var(--yellow-soft); border-color:var(--yellow); }
+.mini-fcard:nth-child(2) { background:var(--blue-pale); border-color:var(--blue-soft); }
+.mini-fcard:nth-child(3) { background:var(--pink-pale); border-color:var(--pink-soft); }
+.mini-fcard:nth-child(4) { background:var(--green-soft); border-color:var(--green-soft); }
+.mini-fcard .icon { font-size:28px; margin-bottom:12px; }
 .mini-fcard .ft { font-size:14px; font-weight:700; margin-bottom:6px; color:var(--ink); }
 .mini-fcard .fd { font-size:13px; color:var(--ink-soft); line-height:1.55; }
 
 /* USES */
-.uses-section { background:var(--paper-sage); }
+.uses-section {
+  background:linear-gradient(135deg, var(--blue-pale) 0%, var(--pink-pale) 100%);
+}
 .uses-lead { max-width:880px; margin-bottom:36px; }
 .uses-grid { display:grid; grid-template-columns:1.05fr 1fr; gap:24px; align-items:stretch; }
-.use-card { padding:34px 32px; border-radius:18px; display:flex; flex-direction:column; }
-.use-card.primary { background:var(--ink); color:var(--paper); position:relative; overflow:hidden; }
-.use-card.primary::before {
-  content:""; position:absolute; top:-60px; right:-60px; width:180px; height:180px;
-  background:var(--mustard); border-radius:50%; opacity:0.9;
+.use-card { padding:34px 32px; border-radius:20px; display:flex; flex-direction:column; }
+.use-card.primary {
+  background:linear-gradient(145deg, #1a1f3a 0%, #0f1117 100%);
+  color:white; position:relative; overflow:hidden;
+  box-shadow:0 20px 50px rgba(59,127,255,0.2);
 }
-.use-card.alt { background:white; }
-.use-card h3 { font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin-bottom:14px; letter-spacing:-0.4px; position:relative; z-index:1; }
+.use-card.primary::before {
+  content:""; position:absolute; top:-80px; right:-80px; width:260px; height:260px;
+  background:radial-gradient(circle, var(--pink) 0%, transparent 70%);
+  opacity:0.6;
+}
+.use-card.primary::after {
+  content:""; position:absolute; bottom:-60px; left:-60px; width:200px; height:200px;
+  background:radial-gradient(circle, var(--blue) 0%, transparent 70%);
+  opacity:0.5;
+}
+.use-card.alt {
+  background:white;
+  border:1.5px solid var(--line);
+  box-shadow:0 4px 20px rgba(0,0,0,0.04);
+}
+.use-card h3 {
+  font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin-bottom:14px;
+  letter-spacing:-0.4px; position:relative; z-index:1;
+}
+.use-card.primary h3 { color:white; }
 .use-card p { font-size:15px; line-height:1.65; margin-bottom:18px; position:relative; z-index:1; }
-.use-card.primary p { color:rgba(253,248,238,0.85); }
+.use-card.primary p { color:rgba(255,255,255,0.75); }
 .use-card.alt p { color:var(--ink-soft); }
 .use-card ul { list-style:none; margin-top:8px; position:relative; z-index:1; }
 .use-card ul li { font-size:14.5px; padding:9px 0; }
-.use-card.primary ul li { border-bottom:1px solid rgba(253,248,238,0.15); }
+.use-card.primary ul li { border-bottom:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.9); }
 .use-card.alt ul li { border-bottom:1px solid var(--line); color:var(--ink-soft); }
 .use-card ul li:last-child { border-bottom:none; }
-.use-card.primary ul li::before { content:"›"; color:var(--mustard); margin-right:10px; font-weight:700; font-size:18px; }
-.use-card.alt ul li::before { content:"›"; color:var(--sage-dark); margin-right:10px; font-weight:700; font-size:18px; }
-.not-suited { margin-top:18px; background:var(--paper-warm); border-radius:10px; padding:14px 18px; font-size:13px; color:var(--muted); line-height:1.55; }
+.not-suited {
+  margin-top:18px; background:var(--line-soft); border-radius:10px;
+  padding:14px 18px; font-size:13px; color:var(--muted); line-height:1.55;
+  border-left:3px solid var(--line);
+}
 .not-suited strong { color:var(--ink); font-weight:600; }
 
 /* PRICE TIERS */
 .price-section { background:var(--paper); }
 .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:30px; }
 .pcard {
-  background:white; border:2px solid var(--line); padding:30px 28px; border-radius:18px;
-  display:flex; flex-direction:column; transition:transform .25s, border-color .25s;
+  background:var(--paper-2); border:2px solid var(--line); padding:30px 28px; border-radius:20px;
+  display:flex; flex-direction:column; transition:transform .25s, border-color .25s, box-shadow .25s;
 }
-.pcard:hover { transform:translateY(-4px); border-color:var(--sage); }
-.pcard.featured { background:var(--ink); color:var(--paper); border-color:var(--ink); position:relative; }
+.pcard:hover { transform:translateY(-5px); border-color:var(--blue-soft); box-shadow:0 12px 32px rgba(59,127,255,0.12); }
+.pcard.featured {
+  background:linear-gradient(145deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color:white; border-color:var(--blue); position:relative;
+  box-shadow:0 16px 40px rgba(59,127,255,0.3);
+}
 .pcard.featured::before {
-  content:"Beliebt"; position:absolute; top:-12px; left:28px;
-  background:var(--mustard); color:var(--ink); font-size:11px; font-weight:700;
-  padding:5px 12px; border-radius:999px; letter-spacing:0.5px;
+  content:"Beliebt"; position:absolute; top:-13px; left:28px;
+  background:var(--yellow); color:var(--ink); font-size:11px; font-weight:800;
+  padding:5px 14px; border-radius:999px; letter-spacing:0.5px;
 }
-.pcard .tier-label { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--sage-dark); margin-bottom:8px; }
-.pcard.featured .tier-label { color:var(--mustard); }
-.pcard .tier-h { font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:700; margin-bottom:18px; letter-spacing:-0.3px; }
-.pcard .price { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; line-height:1; margin-bottom:6px; letter-spacing:-1px; }
+.pcard .tier-label {
+  font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--blue); margin-bottom:8px;
+}
+.pcard.featured .tier-label { color:rgba(255,255,255,0.7); }
+.pcard .tier-h {
+  font-family:'Space Grotesk',sans-serif; font-size:20px; font-weight:700;
+  margin-bottom:18px; letter-spacing:-0.3px; color:var(--ink);
+}
+.pcard.featured .tier-h { color:white; }
+.pcard .price {
+  font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700;
+  line-height:1; margin-bottom:6px; letter-spacing:-1px; color:var(--ink);
+}
+.pcard.featured .price { color:white; }
 .pcard .price .ppm { font-size:14px; font-weight:500; color:var(--muted); margin-left:4px; }
-.pcard.featured .price .ppm { color:rgba(253,248,238,0.6); }
+.pcard.featured .price .ppm { color:rgba(255,255,255,0.55); }
 .pcard .price-desc { font-size:13px; color:var(--muted); margin-bottom:18px; }
-.pcard.featured .price-desc { color:rgba(253,248,238,0.65); }
-.pcard ul { list-style:none; margin-top:auto; padding-top:18px; border-top:1px solid var(--line); }
-.pcard.featured ul { border-top-color:rgba(253,248,238,0.15); }
+.pcard.featured .price-desc { color:rgba(255,255,255,0.65); }
+.pcard ul { list-style:none; margin-top:auto; padding-top:18px; border-top:1.5px solid var(--line); }
+.pcard.featured ul { border-top-color:rgba(255,255,255,0.18); }
 .pcard ul li { font-size:13.5px; padding:6px 0; color:var(--ink-soft); }
-.pcard.featured ul li { color:rgba(253,248,238,0.85); }
-.pcard ul li::before { content:"✓"; color:var(--sage-dark); margin-right:10px; font-weight:700; }
-.pcard.featured ul li::before { color:var(--mustard); }
-.price-note { margin-top:28px; background:var(--paper-warm); border-radius:12px; padding:16px 22px; font-size:13.5px; color:var(--ink-soft); line-height:1.65; max-width:880px; }
+.pcard.featured ul li { color:rgba(255,255,255,0.88); }
+.pcard ul li::before { content:"✓ "; color:var(--blue); font-weight:700; }
+.pcard.featured ul li::before { color:var(--yellow); }
+.price-note {
+  margin-top:28px; background:var(--blue-pale); border:1.5px solid var(--blue-soft);
+  border-radius:14px; padding:16px 22px; font-size:13.5px; color:var(--ink-soft); line-height:1.65; max-width:880px;
+}
 .price-note strong { color:var(--ink); }
 
-/* TERMS — minimal row */
+/* TERMS */
 .terms-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px; }
-.tcard { padding:22px 24px; border-radius:14px; }
-.tcard:nth-child(1) { background:var(--paper-sage); }
-.tcard:nth-child(2) { background:var(--paper-warm); }
-.tcard:nth-child(3) { background:var(--sage-soft); }
-.tcard .tlbl { font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.tcard { padding:22px 24px; border-radius:16px; border:1.5px solid transparent; }
+.tcard:nth-child(1) { background:var(--blue-pale); border-color:var(--blue-soft); }
+.tcard:nth-child(2) { background:var(--yellow-soft); border-color:var(--yellow); }
+.tcard:nth-child(3) { background:var(--green-soft); border-color:rgba(45,201,122,0.3); }
+.tcard .tlbl { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
 .tcard .tval { font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; line-height:1.2; margin-bottom:8px; color:var(--ink); }
 .tcard .tdesc { font-size:13px; line-height:1.55; color:var(--ink-soft); }
 
 /* LOCATION */
-.loc-section { background:var(--paper-warm); }
+.loc-section { background:var(--line-soft); }
 .loc-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
 .loc-cards { display:grid; gap:12px; }
-.loc-card { background:white; padding:22px 24px; border-radius:14px; transition:transform .2s; }
-.loc-card:hover { transform:translateX(4px); }
-.loc-card .lct { font-size:12px; font-weight:600; letter-spacing:0.8px; text-transform:uppercase; color:var(--sage-dark); margin-bottom:6px; }
+.loc-card {
+  background:var(--paper-2); padding:22px 24px; border-radius:16px;
+  border:1.5px solid var(--line); transition:transform .2s, box-shadow .2s;
+}
+.loc-card:hover { transform:translateX(4px); box-shadow:0 4px 16px rgba(59,127,255,0.1); }
+.loc-card .lct { font-size:12px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; color:var(--blue); margin-bottom:6px; }
 .loc-card .lcv { font-size:14.5px; line-height:1.65; color:var(--ink-soft); }
-.loc-card a { color:var(--sage-dark); border-bottom:1px solid var(--sage-soft); text-decoration:none; font-weight:600; }
+.loc-card a { color:var(--blue); border-bottom:1px solid var(--blue-soft); text-decoration:none; font-weight:600; }
 
 /* CONTACT */
-.contact-section { background:var(--ink); color:var(--paper); padding:90px 80px; position:relative; overflow:hidden; }
+.contact-section {
+  background:linear-gradient(145deg, #0f1117 0%, #141828 100%);
+  color:white; padding:90px 80px; position:relative; overflow:hidden;
+}
 .contact-section::before {
-  content:""; position:absolute; top:-150px; right:-150px; width:500px; height:500px;
-  background:radial-gradient(circle, rgba(232,181,74,0.22) 0%, transparent 70%);
+  content:""; position:absolute; top:-200px; right:-200px; width:600px; height:600px;
+  background:radial-gradient(circle, rgba(232,65,122,0.22) 0%, transparent 65%);
+}
+.contact-section::after {
+  content:""; position:absolute; bottom:-120px; left:-100px; width:500px; height:500px;
+  background:radial-gradient(circle, rgba(59,127,255,0.22) 0%, transparent 65%);
 }
 .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:1; }
-.contact-inner h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(32px,3.8vw,46px); font-weight:700; line-height:1.1; margin-bottom:22px; color:var(--paper); letter-spacing:-1px; }
-.contact-inner h2 .accent { color:var(--mustard); }
-.contact-inner p { font-size:16px; line-height:1.75; color:rgba(253,248,238,0.78); margin-bottom:28px; }
-.contact-form-hint { background:rgba(253,248,238,0.06); border-radius:14px; padding:22px 26px; margin-bottom:28px; }
-.contact-form-hint .cfh-t { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--mustard); margin-bottom:12px; }
+.contact-inner h2 {
+  font-family:'Space Grotesk',sans-serif; font-size:clamp(32px,3.8vw,46px); font-weight:700;
+  line-height:1.1; margin-bottom:22px; color:white; letter-spacing:-1px;
+}
+.contact-inner h2 .accent {
+  background:linear-gradient(135deg, var(--yellow) 0%, var(--pink) 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.contact-inner p { font-size:16px; line-height:1.75; color:rgba(255,255,255,0.68); margin-bottom:28px; }
+.contact-form-hint {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:22px 26px; margin-bottom:28px;
+}
+.contact-form-hint .cfh-t {
+  font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--yellow); margin-bottom:12px;
+}
 .contact-form-hint ul { list-style:none; padding:0; }
-.contact-form-hint li { font-size:14px; color:rgba(253,248,238,0.85); padding:5px 0; display:flex; align-items:center; gap:10px; }
-.contact-form-hint li::before { content:"○"; color:var(--mustard); font-size:10px; }
+.contact-form-hint li {
+  font-size:14px; color:rgba(255,255,255,0.82); padding:5px 0;
+  display:flex; align-items:center; gap:10px;
+}
+.contact-form-hint li::before { content:"○"; color:var(--pink); font-size:10px; }
 .cdetail { margin-bottom:16px; }
-.cdetail .cl { font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--mustard); margin-bottom:4px; }
-.cdetail .cv { font-size:16px; }
-.cdetail a { color:var(--paper); text-decoration:none; border-bottom:1px solid rgba(232,181,74,0.5); padding-bottom:2px; }
-.contact-img { width:100%; height:440px; object-fit:cover; border-radius:18px; }
+.cdetail .cl { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--yellow); margin-bottom:4px; }
+.cdetail .cv { font-size:16px; color:white; }
+.cdetail a { color:white; text-decoration:none; border-bottom:1px solid rgba(255,212,74,0.5); padding-bottom:2px; }
+.contact-img {
+  width:100%; height:440px; object-fit:cover; border-radius:20px;
+  filter:brightness(1.08) saturate(1.12);
+  box-shadow:0 30px 60px rgba(0,0,0,0.35);
+}
 
-footer { background:#141a14; color:rgba(253,248,238,0.5); padding:24px 80px; display:flex; justify-content:space-between; font-size:13px; }
-footer a { color:rgba(253,248,238,0.5); text-decoration:none; }
-footer a:hover { color:var(--mustard); }
+footer {
+  background:#07090e; color:rgba(255,255,255,0.38); padding:24px 80px;
+  display:flex; justify-content:space-between; font-size:13px;
+}
+footer a { color:rgba(255,255,255,0.38); text-decoration:none; }
+footer a:hover { color:var(--pink); }
 
 @media(max-width:980px){
   nav { padding:14px 20px; } .nav-links { display:none; }
   .hero { grid-template-columns:1fr; min-height:auto; }
-  .hero-content { padding:110px 24px 50px; }
+  .hero-content { padding:150px 24px 50px; }
   .hero-img { height:340px; }
   .hero-img::after { width:90px; height:90px; top:20px; right:20px; }
   .hero-stamp { top:42px; right:43px; }
@@ -275,12 +434,17 @@ footer a:hover { color:var(--mustard); }
   .price-grid { gap:16px; }
   .contact-section { padding:56px 24px; }
   footer { padding:20px 24px; flex-direction:column; gap:8px; }
+  .announce-bar { font-size:11px; padding:7px 12px; }
 }
 </style>
 </head>
 <body>
 
-<nav>
+<div class="announce-bar">
+  <span>🕺 Tanz</span><span>🎵 Musik</span><span>🎭 Theater</span><span>⚡ Sport</span><span>🎨 Kreativkurse</span><span>👧 Kinder & Jugendliche</span>
+</div>
+
+<nav style="top:38px;">
   <div class="nav-logo">Saal<span>Brunnmatt</span></div>
   <button id="lang-btn">EN</button>
   <div class="nav-links">
@@ -295,6 +459,7 @@ footer a:hover { color:var(--mustard); }
   <div class="hero-content">
     <div class="blob blob-y"></div>
     <div class="blob blob-s"></div>
+    <div class="blob blob-c"></div>
     <div class="eyebrow" id="eyebrow">Saal mieten · Bern</div>
     <h1 id="hero-title">Suchst du einen Raum f&uuml;r deine <span class="hl-y">Tanz-, Musik-</span> oder <span class="hl-s">Gesangsstunden</span> in Bern?</h1>
     <div class="hero-sub" id="hero-sub">Heller Saal mit Holzparkett und Klavier &ndash; mitten in Bern. F&uuml;r deinen regelm&auml;ssigen Kurs, deine Probe oder dein Studio.</div>
@@ -316,7 +481,7 @@ footer a:hover { color:var(--mustard); }
 </section>
 
 <!-- DER SAAL — combined with features -->
-<section style="background:var(--paper);" id="raum">
+<section style="background:var(--paper-2);" id="raum">
   <div class="section-label" id="sl0">Der Saal</div>
   <h2 class="stitle" id="st0">Hell, ruhig, vielseitig nutzbar</h2>
   <p class="intro-p" id="rp1">Holzvert&auml;felung, W&uuml;rfelparkett, hohe Sprossenfenster und eine umlaufende Empore. Geeignet f&uuml;r alles vom Tanzkurs &uuml;ber Musikunterricht bis zur Theaterprobe.</p>
@@ -354,21 +519,21 @@ footer a:hover { color:var(--mustard); }
       <h3 id="up-pri-t">Bevorzugte Mieter</h3>
       <p id="up-pri-p">Bei gleichwertigen Anfragen vergeben wir den Saal vorrangig an Anbieter im Bereich Bewegung, Sport oder Kultur, oder mit Angeboten f&uuml;r Kinder und Jugendliche.</p>
       <ul>
-        <li id="up-li0">Tanzschulen &amp; Kindertanz</li>
-        <li id="up-li1">Musik- und Gesangsunterricht</li>
-        <li id="up-li2">Yoga, Pilates, Bewegung</li>
-        <li id="up-li3">Theater, Schauspiel, Kultur</li>
-        <li id="up-li4">Sport- und Bewegungskurse</li>
+        <li id="up-li0">🕺 Tanzschulen &amp; Kindertanz</li>
+        <li id="up-li1">🎵 Musik- und Gesangsunterricht</li>
+        <li id="up-li2">🎭 Theater, Schauspiel, Kultur</li>
+        <li id="up-li3">⚡ Sport- und Bewegungskurse</li>
+        <li id="up-li4">🎨 Kreativkurse &amp; Workshops</li>
       </ul>
     </div>
     <div class="use-card alt">
       <h3 id="up-biz-t">Ebenfalls geeignet</h3>
       <p id="up-biz-p">Auch andere gewerbliche Nutzungen mit regelm&auml;ssigem Bedarf, sofern sie zur Lage und Akustik des Saals passen.</p>
       <ul>
-        <li id="up-li5">Erwachsenenkurse</li>
-        <li id="up-li6">Workshops und Seminare</li>
-        <li id="up-li7">Probenraum (Chor, Ensemble)</li>
-        <li id="up-li8">Kleingruppen-Coaching</li>
+        <li id="up-li5">👥 Erwachsenenkurse</li>
+        <li id="up-li6">💡 Workshops und Seminare</li>
+        <li id="up-li7">🎶 Probenraum (Chor, Ensemble)</li>
+        <li id="up-li8">🌱 Kleingruppen-Coaching</li>
       </ul>
       <div class="not-suited" id="not-suited"><strong>Nicht geeignet:</strong> dauerhafte B&uuml;ronutzung, gewerbliches Lager, laute Abendveranstaltungen.</div>
     </div>
@@ -385,7 +550,7 @@ footer a:hover { color:var(--mustard); }
     <div class="pcard">
       <div class="tier-label" id="tier0l">Klein</div>
       <div class="tier-h" id="tier0h">1&ndash;3 Std. pro Woche</div>
-      <div class="price"><span id="tier0p">CHF 220&ndash;380</span><span class="ppm" id="tier0ppm">/ Monat</span></div>
+      <div class="price"><span id="tier0p">CHF 200&ndash;340</span><span class="ppm" id="tier0ppm">/ Monat</span></div>
       <div class="price-desc" id="tier0d">F&uuml;r einen w&ouml;chentlichen Kurs oder eine Probe.</div>
       <ul>
         <li id="tier0f0">Fester w&ouml;chentlicher Zeitslot</li>
@@ -396,7 +561,7 @@ footer a:hover { color:var(--mustard); }
     <div class="pcard featured">
       <div class="tier-label" id="tier1l">Mittel</div>
       <div class="tier-h" id="tier1h">4&ndash;8 Std. pro Woche</div>
-      <div class="price"><span id="tier1p">CHF 450&ndash;800</span><span class="ppm" id="tier1ppm">/ Monat</span></div>
+      <div class="price"><span id="tier1p">CHF 405&ndash;720</span><span class="ppm" id="tier1ppm">/ Monat</span></div>
       <div class="price-desc" id="tier1d">F&uuml;r mehrere w&ouml;chentliche Kurse oder Tage.</div>
       <ul>
         <li id="tier1f0">Mehrere fest gebuchte Slots</li>
@@ -407,7 +572,7 @@ footer a:hover { color:var(--mustard); }
     <div class="pcard">
       <div class="tier-label" id="tier2l">Studio</div>
       <div class="tier-h" id="tier2h">Mehr als 8 Std. pro Woche</div>
-      <div class="price"><span id="tier2p">ab CHF 900</span><span class="ppm" id="tier2ppm">/ Monat</span></div>
+      <div class="price"><span id="tier2p">ab CHF 810</span><span class="ppm" id="tier2ppm">/ Monat</span></div>
       <div class="price-desc" id="tier2d">Studio-Nutzung mit Schwerpunkt im Saal.</div>
       <ul>
         <li id="tier2f0">Pauschale auf Anfrage</li>
@@ -435,7 +600,7 @@ footer a:hover { color:var(--mustard); }
       <div class="section-label" id="sl3">Lage</div>
       <h2 class="stitle" id="st3">Mitten in Bern</h2>
       <p class="intro-p" id="lp1">Brunnmattstrasse 50, 3007 Bern. Tramstation Cecilienplatz direkt nebenan, Bern-Zentrum in rund 10 Minuten. Rund um das Haus Parkpl&auml;tze in der Blauen Zone.</p>
-      <p style="margin-top:14px;"><a href="index inkl. Womiete.html" style="font-size:14px;color:var(--sage-dark);text-decoration:none;font-weight:600;border-bottom:2px solid var(--sage-soft);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
+      <p style="margin-top:14px;"><a href="index inkl. Womiete.html" style="font-size:14px;color:var(--blue);text-decoration:none;font-weight:600;border-bottom:2px solid var(--blue-soft);padding-bottom:2px;" id="lp-link">Brunnmatt 50 &ndash; Wohnung &amp; Anreise &rarr;</a></p>
     </div>
     <div class="loc-cards">
       <div class="loc-card"><div class="lct" id="lc0t">&#128651; &Ouml;ffentlicher Verkehr</div><div class="lcv" id="lc0v">Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.</div></div>
@@ -453,7 +618,7 @@ footer a:hover { color:var(--mustard); }
 <section class="contact-section" id="kontakt">
   <div class="contact-inner">
     <div>
-      <h2 id="contactT">Schreib uns. <span class="accent">Offerte in 48h.</span></h2>
+      <h2 id="contactT">Schreib uns.</h2>
       <p id="contactP">Sag uns kurz, was du im Saal machen m&ouml;chtest und wann du ihn brauchst.</p>
       <div class="contact-form-hint">
         <div class="cfh-t" id="cfh-t">Was wir wissen m&uuml;ssen</div>
@@ -506,17 +671,17 @@ var T = {
     up1:"Wir suchen <strong>regelmässige Mieter</strong> mit festem wöchentlichem Zeitslot zwischen Montag und Freitag – bevorzugt aus den Bereichen <strong>Bewegung, Sport und Kultur</strong> sowie für Angebote mit Kindern und Jugendlichen.",
     upPriT:"Bevorzugte Mieter",
     upPriP:"Bei gleichwertigen Anfragen vergeben wir den Saal vorrangig an Anbieter im Bereich Bewegung, Sport oder Kultur, oder mit Angeboten für Kinder und Jugendliche.",
-    upLi:["Tanzschulen & Kindertanz","Musik- und Gesangsunterricht","Yoga, Pilates, Bewegung","Theater, Schauspiel, Kultur","Sport- und Bewegungskurse","Erwachsenenkurse","Workshops und Seminare","Probenraum (Chor, Ensemble)","Kleingruppen-Coaching"],
+    upLi:["🕺 Tanzschulen & Kindertanz","🎵 Musik- und Gesangsunterricht","🎭 Theater, Schauspiel, Kultur","⚡ Sport- und Bewegungskurse","🎨 Kreativkurse & Workshops","👥 Erwachsenenkurse","💡 Workshops und Seminare","🎶 Probenraum (Chor, Ensemble)","🌱 Kleingruppen-Coaching"],
     upBizT:"Ebenfalls geeignet",
     upBizP:"Auch andere gewerbliche Nutzungen mit regelmässigem Bedarf, sofern sie zur Lage und Akustik des Saals passen.",
     notSuited:'<strong>Nicht geeignet:</strong> dauerhafte Büronutzung, gewerbliches Lager, laute Abendveranstaltungen.',
     slPrice:"Preise & Konditionen", stPrice:"Richtpreise nach Nutzungsintensität",
     ppIntro:"Unverbindliche Richtwerte für regelmässige Mieter mit festem wöchentlichem Slot. Der definitive Preis hängt von Wochentag, Zeitfenster und Mietdauer ab.",
-    tier0l:"Klein", tier0h:"1–3 Std. pro Woche", tier0p:"CHF 220–380", tier0ppm:"/ Monat", tier0d:"Für einen wöchentlichen Kurs oder eine Probe.",
+    tier0l:"Klein", tier0h:"1–3 Std. pro Woche", tier0p:"CHF 200–340", tier0ppm:"/ Monat", tier0d:"Für einen wöchentlichen Kurs oder eine Probe.",
     tier0f:["Fester wöchentlicher Zeitslot","Nutzung von Klavier & Beamer","Alles inklusive"],
-    tier1l:"Mittel", tier1h:"4–8 Std. pro Woche", tier1p:"CHF 450–800", tier1ppm:"/ Monat", tier1d:"Für mehrere wöchentliche Kurse oder Tage.",
+    tier1l:"Mittel", tier1h:"4–8 Std. pro Woche", tier1p:"CHF 405–720", tier1ppm:"/ Monat", tier1d:"Für mehrere wöchentliche Kurse oder Tage.",
     tier1f:["Mehrere fest gebuchte Slots","Nutzung von Klavier & Beamer","Alles inklusive"],
-    tier2l:"Studio", tier2h:"Mehr als 8 Std. pro Woche", tier2p:"ab CHF 900", tier2ppm:"/ Monat", tier2d:"Studio-Nutzung mit Schwerpunkt im Saal.",
+    tier2l:"Studio", tier2h:"Mehr als 8 Std. pro Woche", tier2p:"ab CHF 810", tier2ppm:"/ Monat", tier2d:"Studio-Nutzung mit Schwerpunkt im Saal.",
     tier2f:["Pauschale auf Anfrage","Exklusive Slots möglich","Alles inklusive"],
     priceNote:"<strong>Alle Preise inkl.</strong> Nebenkosten, Strom, Heizung und Reinigung. Für Anbieter mit Angeboten für Kinder, Jugendliche oder im Bereich Bewegung/Sport/Kultur sind vergünstigte Konditionen möglich.",
     t0l:"Vertrag", t0v:"Schriftlich", t0d:"Mietvertrag mit beidseitiger Kündigungsfrist.",
@@ -528,7 +693,7 @@ var T = {
     lc0t:"🚊 Öffentlicher Verkehr", lc0v:"Tramstation Cecilienplatz direkt nebenan. Bern-Zentrum in 10 Minuten.",
     lc1t:"🚗 Parkieren", lc1v:"Parkplätze in der Blauen Zone rund um das Haus.",
     lc2t:"🏠 Adresse", lc2v:"Brunnmattstrasse 50<br>3007 Bern, Schweiz",
-    contactT:'Schreib uns. <span class="accent">Offerte in 48h.</span>',
+    contactT:'Schreib uns.',
     contactP:"Sag uns kurz, was du im Saal machen möchtest und wann du ihn brauchst.",
     cfhT:"Was wir wissen müssen",
     cfh:["Art der geplanten Nutzung","Wochentage & Zeitfenster","Frequenz (z.B. wöchentlich)","Gruppengrösse","Arbeit mit Kindern oder Jugendlichen?"],
@@ -552,17 +717,17 @@ var T = {
     up1:"We're looking for <strong>regular tenants</strong> with a fixed weekly time slot Monday to Friday – preferably from <strong>movement, sport and culture</strong>, or with offerings for children and teenagers.",
     upPriT:"Preferred tenants",
     upPriP:"All else equal, we prioritise providers in movement, sport or culture, or those working with children and teenagers.",
-    upLi:["Dance schools & children's dance","Music and singing lessons","Yoga, pilates, movement","Theatre, acting, culture","Sports and movement courses","Adult courses","Workshops and seminars","Rehearsal space (choir, ensemble)","Small-group coaching"],
+    upLi:["🕺 Dance schools & children's dance","🎵 Music and singing lessons","🎭 Theatre, acting, culture","⚡ Sports and movement courses","🎨 Creative courses & workshops","👥 Adult courses","💡 Workshops and seminars","🎶 Rehearsal space (choir, ensemble)","🌱 Small-group coaching"],
     upBizT:"Also suitable",
     upBizP:"Other commercial uses with regular demand are welcome too, if they fit the location and acoustics.",
     notSuited:'<strong>Not suitable for:</strong> permanent office use, storage, loud evening events.',
     slPrice:"Prices & terms", stPrice:"Indicative prices by usage",
     ppIntro:"Non-binding indicative rates for regular tenants with a fixed weekly slot. The final price depends on weekday, time slot and rental duration.",
-    tier0l:"Small", tier0h:"1–3 hrs per week", tier0p:"CHF 220–380", tier0ppm:"/ month", tier0d:"For one weekly class or rehearsal.",
+    tier0l:"Small", tier0h:"1–3 hrs per week", tier0p:"CHF 200–340", tier0ppm:"/ month", tier0d:"For one weekly class or rehearsal.",
     tier0f:["Fixed weekly time slot","Use of piano & projector","All inclusive"],
-    tier1l:"Medium", tier1h:"4–8 hrs per week", tier1p:"CHF 450–800", tier1ppm:"/ month", tier1d:"For several weekly classes or days.",
+    tier1l:"Medium", tier1h:"4–8 hrs per week", tier1p:"CHF 405–720", tier1ppm:"/ month", tier1d:"For several weekly classes or days.",
     tier1f:["Several fixed slots","Use of piano & projector","All inclusive"],
-    tier2l:"Studio", tier2h:"More than 8 hrs per week", tier2p:"from CHF 900", tier2ppm:"/ month", tier2d:"Studio-style use focused in the hall.",
+    tier2l:"Studio", tier2h:"More than 8 hrs per week", tier2p:"from CHF 810", tier2ppm:"/ month", tier2d:"Studio-style use focused in the hall.",
     tier2f:["Custom package on request","Exclusive slots possible","All inclusive"],
     priceNote:"<strong>All prices incl.</strong> utilities, electricity, heating and cleaning. Discounted rates are possible for providers working with children, teenagers, or in movement/sport/culture.",
     t0l:"Contract", t0v:"Written", t0d:"Rental agreement with mutual notice period.",
@@ -574,7 +739,7 @@ var T = {
     lc0t:"🚊 Public transport", lc0v:"Cecilienplatz tram stop right next door. Bern centre in 10 minutes.",
     lc1t:"🚗 Parking", lc1v:"Blue-zone parking around the building.",
     lc2t:"🏠 Address", lc2v:"Brunnmattstrasse 50<br>3007 Bern, Switzerland",
-    contactT:'Send a message. <span class="accent">Offer in 48h.</span>',
+    contactT:'Send a message.',
     contactP:"Tell us briefly what you'd like to do in the hall and when you need it.",
     cfhT:"What we need to know",
     cfh:["Type of use planned","Weekdays & time slots","Frequency (e.g. weekly)","Group size","Working with children or teenagers?"],
