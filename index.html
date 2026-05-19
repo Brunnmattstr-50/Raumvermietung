@@ -45,7 +45,8 @@ body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink)
 .announce-bar {
   background:linear-gradient(90deg, var(--pink) 0%, var(--blue) 50%, var(--green) 100%);
   color:white; text-align:center; font-size:12.5px; font-weight:700; padding:9px 20px;
-  letter-spacing:0.3px; position:relative; z-index:101; overflow:hidden;
+  letter-spacing:0.3px; position:fixed; top:0; left:0; right:0; z-index:102; overflow:hidden;
+  height:38px;
 }
 .announce-bar::before {
   content:""; position:absolute; inset:0;
@@ -57,10 +58,11 @@ body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink)
 
 /* NAV */
 nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
+  position:fixed; top:38px; left:0; right:0; z-index:100;
   background:rgba(247,248,255,0.95); backdrop-filter:blur(14px);
   border-bottom:1.5px solid var(--line);
   padding:14px 48px;
+  height:56px;
   display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
 }
 .nav-logo {
@@ -90,12 +92,12 @@ nav {
 .hero {
   min-height:auto; position:relative; overflow:hidden;
   display:grid; grid-template-columns:1.1fr 0.9fr;
-  align-items:start;
+  align-items:stretch;
   background:var(--paper);
-  margin-top:77px; /* push below announce bar + nav */
+  margin-top:94px; /* announce 38px + nav 56px */
 }
 .hero-content {
-  padding:56px 70px 64px; display:flex; flex-direction:column; justify-content:flex-start;
+  padding:56px 70px 64px; display:flex; flex-direction:column; justify-content:center;
   position:relative;
 }
 .blob { position:absolute; border-radius:50%; z-index:0; pointer-events:none; filter:blur(10px); }
@@ -166,11 +168,10 @@ nav {
 
 .hero-img {
   position:relative; overflow:hidden;
-  max-height:620px;
 }
 .hero-img img {
   width:100%; height:100%; object-fit:cover; display:block;
-  object-position:center 55%; /* crop ceiling/lamp, show room */
+  object-position:center 60%; /* crop ceiling, show room */
   filter:brightness(1.08) saturate(1.18) contrast(1.04);
 }
 .hero-img::before {
@@ -331,7 +332,7 @@ h2.stitle {
   line-height:1; margin-bottom:6px; letter-spacing:-1px; color:var(--ink);
 }
 .pcard.featured .price { color:white; }
-.pcard .price .ppm { font-size:14px; font-weight:500; color:var(--muted); margin-left:4px; }
+.pcard .price .ppm { font-size:18px; font-weight:600; color:var(--muted); margin-left:6px; }
 .pcard.featured .price .ppm { color:rgba(255,255,255,0.55); }
 .pcard .price-desc { font-size:13px; color:var(--muted); margin-bottom:18px; }
 .pcard.featured .price-desc { color:rgba(255,255,255,0.65); }
@@ -426,7 +427,7 @@ footer a:hover { color:var(--pink); }
 
 @media(max-width:980px){
   nav { padding:14px 20px; } .nav-links { display:none; }
-  .hero { grid-template-columns:1fr; min-height:auto; margin-top:77px; }
+  .hero { grid-template-columns:1fr; min-height:auto; margin-top:94px; }
   .hero-content { padding:40px 24px 44px; }
   .hero-img { height:300px; max-height:300px; }
   .hero-img::after { width:90px; height:90px; top:20px; right:20px; }
@@ -450,7 +451,7 @@ footer a:hover { color:var(--pink); }
   <span>🕺 Tanz</span><span>🎵 Musik</span><span>🎭 Theater</span><span>⚡ Sport</span><span>🎨 Kreativkurse</span><span>👧 Kinder & Jugendliche</span>
 </div>
 
-<nav style="top:38px;">
+<nav>
   <div class="nav-logo">Saal<span>Brunnmatt</span></div>
   <button id="lang-btn">EN</button>
   <div class="nav-links">
@@ -555,7 +556,7 @@ footer a:hover { color:var(--pink); }
   <div class="price-grid">
     <div class="pcard">
       <div class="tier-label" id="tier0l">Klein</div>
-      <div class="tier-h" id="tier0h">1&ndash;3 Std. pro Woche</div>
+      <div class="tier-h" id="tier0h">1&ndash;3 Std./Woche</div>
       <div class="price"><span id="tier0p">CHF 200&ndash;340</span><span class="ppm" id="tier0ppm">/ Monat</span></div>
       <div class="price-desc" id="tier0d">F&uuml;r einen w&ouml;chentlichen Kurs oder eine Probe.</div>
       <ul>
@@ -566,7 +567,7 @@ footer a:hover { color:var(--pink); }
     </div>
     <div class="pcard featured">
       <div class="tier-label" id="tier1l">Mittel</div>
-      <div class="tier-h" id="tier1h">4&ndash;8 Std. pro Woche</div>
+      <div class="tier-h" id="tier1h">4&ndash;8 Std./Woche</div>
       <div class="price"><span id="tier1p">CHF 405&ndash;720</span><span class="ppm" id="tier1ppm">/ Monat</span></div>
       <div class="price-desc" id="tier1d">F&uuml;r mehrere w&ouml;chentliche Kurse oder Tage.</div>
       <ul>
@@ -577,7 +578,7 @@ footer a:hover { color:var(--pink); }
     </div>
     <div class="pcard">
       <div class="tier-label" id="tier2l">Studio</div>
-      <div class="tier-h" id="tier2h">Mehr als 8 Std. pro Woche</div>
+      <div class="tier-h" id="tier2h">Mehr als 8 Std./Woche</div>
       <div class="price"><span id="tier2p">ab CHF 810</span><span class="ppm" id="tier2ppm">/ Monat</span></div>
       <div class="price-desc" id="tier2d">Studio-Nutzung mit Schwerpunkt im Saal.</div>
       <ul>
@@ -683,11 +684,11 @@ var T = {
     notSuited:'<strong>Nicht geeignet:</strong> dauerhafte Büronutzung, gewerbliches Lager, laute Abendveranstaltungen.',
     slPrice:"Preise & Konditionen", stPrice:"Richtpreise nach Nutzungsintensität",
     ppIntro:"Unverbindliche Richtwerte für regelmässige Mieter mit festem wöchentlichem Slot. Der definitive Preis hängt von Wochentag, Zeitfenster und Mietdauer ab.",
-    tier0l:"Klein", tier0h:"1–3 Std. pro Woche", tier0p:"CHF 200–340", tier0ppm:"/ Monat", tier0d:"Für einen wöchentlichen Kurs oder eine Probe.",
+    tier0l:"Klein", tier0h:"1–3 Std./Woche", tier0p:"CHF 200–340", tier0ppm:"/ Monat", tier0d:"Für einen wöchentlichen Kurs oder eine Probe.",
     tier0f:["Fester wöchentlicher Zeitslot","Nutzung von Klavier & Beamer","Alles inklusive"],
-    tier1l:"Mittel", tier1h:"4–8 Std. pro Woche", tier1p:"CHF 405–720", tier1ppm:"/ Monat", tier1d:"Für mehrere wöchentliche Kurse oder Tage.",
+    tier1l:"Mittel", tier1h:"4–8 Std./Woche", tier1p:"CHF 405–720", tier1ppm:"/ Monat", tier1d:"Für mehrere wöchentliche Kurse oder Tage.",
     tier1f:["Mehrere fest gebuchte Slots","Nutzung von Klavier & Beamer","Alles inklusive"],
-    tier2l:"Studio", tier2h:"Mehr als 8 Std. pro Woche", tier2p:"ab CHF 810", tier2ppm:"/ Monat", tier2d:"Studio-Nutzung mit Schwerpunkt im Saal.",
+    tier2l:"Studio", tier2h:"Mehr als 8 Std./Woche", tier2p:"ab CHF 810", tier2ppm:"/ Monat", tier2d:"Studio-Nutzung mit Schwerpunkt im Saal.",
     tier2f:["Pauschale auf Anfrage","Exklusive Slots möglich","Alles inklusive"],
     priceNote:"<strong>Alle Preise inkl.</strong> Nebenkosten, Strom, Heizung und Reinigung. Für Anbieter mit Angeboten für Kinder, Jugendliche oder im Bereich Bewegung/Sport/Kultur sind vergünstigte Konditionen möglich.",
     t0l:"Vertrag", t0v:"Schriftlich", t0d:"Mietvertrag mit beidseitiger Kündigungsfrist.",
@@ -729,11 +730,11 @@ var T = {
     notSuited:'<strong>Not suitable for:</strong> permanent office use, storage, loud evening events.',
     slPrice:"Prices & terms", stPrice:"Indicative prices by usage",
     ppIntro:"Non-binding indicative rates for regular tenants with a fixed weekly slot. The final price depends on weekday, time slot and rental duration.",
-    tier0l:"Small", tier0h:"1–3 hrs per week", tier0p:"CHF 200–340", tier0ppm:"/ month", tier0d:"For one weekly class or rehearsal.",
+    tier0l:"Small", tier0h:"1–3 hrs/week", tier0p:"CHF 200–340", tier0ppm:"/ month", tier0d:"For one weekly class or rehearsal.",
     tier0f:["Fixed weekly time slot","Use of piano & projector","All inclusive"],
-    tier1l:"Medium", tier1h:"4–8 hrs per week", tier1p:"CHF 405–720", tier1ppm:"/ month", tier1d:"For several weekly classes or days.",
+    tier1l:"Medium", tier1h:"4–8 hrs/week", tier1p:"CHF 405–720", tier1ppm:"/ month", tier1d:"For several weekly classes or days.",
     tier1f:["Several fixed slots","Use of piano & projector","All inclusive"],
-    tier2l:"Studio", tier2h:"More than 8 hrs per week", tier2p:"from CHF 810", tier2ppm:"/ month", tier2d:"Studio-style use focused in the hall.",
+    tier2l:"Studio", tier2h:"More than 8 hrs/week", tier2p:"from CHF 810", tier2ppm:"/ month", tier2d:"Studio-style use focused in the hall.",
     tier2f:["Custom package on request","Exclusive slots possible","All inclusive"],
     priceNote:"<strong>All prices incl.</strong> utilities, electricity, heating and cleaning. Discounted rates are possible for providers working with children, teenagers, or in movement/sport/culture.",
     t0l:"Contract", t0v:"Written", t0d:"Rental agreement with mutual notice period.",
