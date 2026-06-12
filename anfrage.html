@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raum anfragen · Bottigenstrasse · Bern</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1117;
+  --ink-soft: #3d3f4e;
+  --paper: #f7f8ff;
+  --paper-2: #ffffff;
+  --blue: #3b7fff;
+  --blue-dark: #1d5fdd;
+  --blue-soft: #dceaff;
+  --blue-pale: #eef4ff;
+  --pink: #e8417a;
+  --yellow: #ffd44a;
+  --muted: #8a8fa8;
+  --line: #e4e6f0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); min-height:100vh; }
+
+nav {
+  background:rgba(247,248,255,0.95); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding:16px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { font-family:'Space Grotesk',sans-serif; font-size:17px; font-weight:700; color:var(--ink); text-decoration:none; }
+.nav-logo span { color:var(--blue); }
+.back-link { font-size:13.5px; font-weight:500; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .2s; }
+.back-link:hover { color:var(--blue); }
+
+.hero {
+  background: linear-gradient(135deg, var(--blue-pale) 0%, var(--paper) 60%);
+  padding: 72px 24px 56px;
+  text-align:center;
+  border-bottom: 1px solid var(--line);
+}
+.hero-label { font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue); margin-bottom:16px; }
+.hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,5vw,48px); font-weight:700; color:var(--ink); line-height:1.15; margin-bottom:14px; }
+.hero p { font-size:16px; color:var(--ink-soft); max-width:520px; margin:0 auto; line-height:1.65; }
+
+.form-wrap {
+  max-width:680px; margin:0 auto; padding:48px 24px 80px;
+}
+
+.form-section {
+  background:var(--paper-2);
+  border:1.5px solid var(--line);
+  border-radius:20px;
+  padding:36px;
+  margin-bottom:20px;
+}
+.section-title {
+  font-family:'Space Grotesk',sans-serif;
+  font-size:15px; font-weight:700;
+  color:var(--ink);
+  margin-bottom:24px;
+  padding-bottom:14px;
+  border-bottom:1.5px solid var(--line);
+  display:flex; align-items:center; gap:10px;
+}
+.section-title .icon { font-size:18px; }
+
+.field { margin-bottom:20px; }
+.field:last-child { margin-bottom:0; }
+label { display:block; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:7px; letter-spacing:0.3px; }
+label .req { color:var(--blue); margin-left:2px; }
+
+input[type=text], input[type=email], input[type=tel], textarea, select {
+  width:100%;
+  padding:12px 16px;
+  border:1.5px solid var(--line);
+  border-radius:10px;
+  font-size:15px;
+  font-family:'Inter',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  transition:border-color .2s, box-shadow .2s;
+  appearance:none;
+}
+input:focus, textarea:focus, select:focus {
+  outline:none;
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(59,127,255,0.12);
+}
+textarea { resize:vertical; min-height:100px; }
+select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8fa8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; cursor:pointer; }
+
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+
+.checkbox-group { display:flex; flex-direction:column; gap:10px; }
+.check-item { display:flex; align-items:center; gap:10px; cursor:pointer; }
+.check-item input[type=checkbox] { width:18px; height:18px; accent-color:var(--blue); cursor:pointer; flex-shrink:0; }
+.check-item span { font-size:14.5px; color:var(--ink); }
+
+.submit-wrap { margin-top:32px; text-align:center; }
+.btn-submit {
+  background:var(--blue);
+  color:white;
+  border:none;
+  padding:16px 48px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+  cursor:pointer;
+  transition:background .2s, transform .1s;
+  letter-spacing:0.3px;
+}
+.btn-submit:hover { background:var(--blue-dark); transform:translateY(-2px); }
+.btn-submit:active { transform:translateY(0); }
+.submit-note { font-size:12.5px; color:var(--muted); margin-top:12px; }
+
+.success-box {
+  display:none;
+  background:var(--paper-2);
+  border:2px solid #2dc97a;
+  border-radius:20px;
+  padding:48px 36px;
+  text-align:center;
+  margin-top:20px;
+}
+.success-box .tick { font-size:48px; margin-bottom:16px; }
+.success-box h2 { font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:700; margin-bottom:10px; }
+.success-box p { color:var(--ink-soft); font-size:15px; line-height:1.6; }
+
+footer {
+  background:var(--ink);
+  color:rgba(255,255,255,0.5);
+  text-align:center;
+  padding:24px;
+  font-size:13px;
+}
+footer a { color:rgba(255,255,255,0.6); text-decoration:none; }
+
+@media (max-width:600px) {
+  nav { padding:14px 20px; }
+  .form-section { padding:24px 20px; }
+  .field-row { grid-template-columns:1fr; }
+  .hero { padding:56px 20px 40px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index__2_.html">Bottigenstrasse <span>·</span> Bern</a>
+  <a class="back-link" href="index__2_.html">← Zurück zur Website</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Raumanfrage</div>
+  <h1>Erzähl uns von deinem Vorhaben</h1>
+  <p>Füll das Formular aus — wir melden uns innert 48 Stunden mit einer unverbindlichen Offerte.</p>
+</div>
+
+<div class="form-wrap">
+
+  <!-- KONTAKT -->
+  <div class="form-section">
+    <div class="section-title"><span class="icon">👤</span> Deine Angaben</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Name<span class="req">*</span></label>
+        <input type="text" id="name" placeholder="Vorname Nachname" required>
+      </div>
+      <div class="field">
+        <label>Telefon</label>
+        <input type="tel" id="tel" placeholder="079 123 45 67">
+      </div>
+    </div>
+    <div class="field">
+      <label>E-Mail<span class="req">*</span></label>
+      <input type="email" id="email" placeholder="name@beispiel.ch" required>
+    </div>
+  </div>
+
+  <!-- NUTZUNG -->
+  <div class="form-section">
+    <div class="section-title"><span class="icon">🎵</span> Art der Nutzung</div>
+
+    <div class="field">
+      <label>Was planst du im Raum?<span class="req">*</span></label>
+      <select id="nutzung">
+        <option value="">Bitte wählen…</option>
+        <option>Tanz (Kindertanz / Jugend)</option>
+        <option>Tanz (Erwachsene)</option>
+        <option>Gesangsunterricht</option>
+        <option>Instrumentalunterricht</option>
+        <option>Yoga / Pilates / Bewegung</option>
+        <option>Sport- / Fitnesskurs</option>
+        <option>Theater / Schauspiel</option>
+        <option>Chor / Ensemble (Probe)</option>
+        <option>Workshop / Seminar</option>
+        <option>Coaching / Kleingruppe</option>
+        <option>Anderes</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Weitere Details zur Nutzung</label>
+      <textarea id="details" placeholder="z.B. Kindertanz ab 4 Jahren, mit Musik vom Lautsprecher. Oder: Gitarrenunterricht Einzelstunden, kein Schlagzeug…"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Werden Instrumente mitgebracht?</label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox" name="instrument" value="Klavier (vorhanden)"> <span>Klavier (im Raum vorhanden)</span></label>
+        <label class="check-item"><input type="checkbox" name="instrument" value="Gitarre"> <span>Gitarre</span></label>
+        <label class="check-item"><input type="checkbox" name="instrument" value="Blasinstrument"> <span>Blasinstrument</span></label>
+        <label class="check-item"><input type="checkbox" name="instrument" value="Schlagzeug / Percussion"> <span>Schlagzeug / Percussion</span></label>
+        <label class="check-item"><input type="checkbox" name="instrument" value="Keine Instrumente"> <span>Keine Instrumente</span></label>
+        <label class="check-item"><input type="checkbox" name="instrument" value="Anderes Instrument"> <span>Anderes</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Anzahl Teilnehmende (ca.)</label>
+      <select id="teiln">
+        <option value="">Bitte wählen…</option>
+        <option>1–5 Personen</option>
+        <option>6–10 Personen</option>
+        <option>11–20 Personen</option>
+        <option>Mehr als 20</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ZEITPLAN -->
+  <div class="form-section">
+    <div class="section-title"><span class="icon">📅</span> Zeitplan</div>
+
+    <div class="field">
+      <label>Gewünschte Wochentage<span class="req">*</span></label>
+      <div class="checkbox-group">
+        <label class="check-item"><input type="checkbox" name="tag" value="Montag"> <span>Montag</span></label>
+        <label class="check-item"><input type="checkbox" name="tag" value="Dienstag"> <span>Dienstag</span></label>
+        <label class="check-item"><input type="checkbox" name="tag" value="Mittwoch"> <span>Mittwoch</span></label>
+        <label class="check-item"><input type="checkbox" name="tag" value="Donnerstag"> <span>Donnerstag</span></label>
+        <label class="check-item"><input type="checkbox" name="tag" value="Freitag"> <span>Freitag</span></label>
+        <label class="check-item"><input type="checkbox" name="tag" value="Samstag"> <span>Samstag</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Bevorzugtes Zeitfenster</label>
+      <select id="zeit">
+        <option value="">Bitte wählen…</option>
+        <option>Vormittag (08:00–12:00)</option>
+        <option>Mittag (12:00–14:00)</option>
+        <option>Nachmittag (14:00–17:00)</option>
+        <option>Abend (17:00–21:00)</option>
+        <option>Flexibel / noch offen</option>
+      </select>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Stunden pro Woche (ca.)<span class="req">*</span></label>
+        <select id="stunden">
+          <option value="">Bitte wählen…</option>
+          <option>1 Stunde</option>
+          <option>2 Stunden</option>
+          <option>3 Stunden</option>
+          <option>4–6 Stunden</option>
+          <option>7–10 Stunden</option>
+          <option>Mehr als 10 Stunden</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Gewünschter Start</label>
+        <select id="start">
+          <option value="">Bitte wählen…</option>
+          <option>So bald wie möglich</option>
+          <option>In 1–2 Monaten</option>
+          <option>Ab Sommer 2025</option>
+          <option>Ab Herbst / neues Semester</option>
+          <option>Ab 2026</option>
+          <option>Noch offen</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Mietdauer</label>
+      <select id="dauer">
+        <option value="">Bitte wählen…</option>
+        <option>Probemonat / kurzfristig</option>
+        <option>3–6 Monate</option>
+        <option>6–12 Monate</option>
+        <option>Langfristig (1+ Jahr)</option>
+        <option>Noch offen</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- PREISVORSTELLUNG -->
+  <div class="form-section">
+    <div class="section-title"><span class="icon">💰</span> Preisvorstellung</div>
+
+    <div class="field">
+      <label>Budget pro Stunde (CHF)</label>
+      <select id="preis">
+        <option value="">Bitte wählen…</option>
+        <option>Bis CHF 25</option>
+        <option>CHF 25–30</option>
+        <option>CHF 30–35</option>
+        <option>CHF 35–40</option>
+        <option>Über CHF 40 möglich</option>
+        <option>Noch unklar / auf Anfrage</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Bemerkungen / weitere Infos</label>
+      <textarea id="bemerkung" placeholder="Alles was noch wichtig ist — z.B. Lärmempfindlichkeit der Nutzung, Sonderausstattung, Fragen…"></textarea>
+    </div>
+  </div>
+
+  <div class="submit-wrap">
+    <button class="btn-submit" onclick="absenden()">Anfrage absenden →</button>
+    <div class="submit-note">Deine Angaben werden per E-Mail direkt an uns übermittelt.</div>
+  </div>
+
+  <div class="success-box" id="success">
+    <div class="tick">✅</div>
+    <h2>Anfrage gesendet!</h2>
+    <p>Danke für dein Interesse. Wir melden uns in den nächsten Tagen bei dir.<br>Liebe Grüsse, Ivan Schmid</p>
+  </div>
+
+</div>
+
+<footer>
+  Bottigenstrasse · Bern &nbsp;·&nbsp; <a href="mailto:ivan.schmid@me.com">ivan.schmid@me.com</a>
+</footer>
+
+<script>
+async function absenden() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const stunden = document.getElementById('stunden').value;
+
+  if (!name || !email || !stunden) {
+    alert('Bitte fülle mindestens Name, E-Mail und Stunden pro Woche aus.');
+    return;
+  }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Wird gesendet…';
+  btn.disabled = true;
+
+  const tage = [...document.querySelectorAll('input[name="tag"]:checked')].map(c => c.value).join(', ') || '–';
+  const instrumente = [...document.querySelectorAll('input[name="instrument"]:checked')].map(c => c.value).join(', ') || '–';
+
+  const data = {
+    name,
+    email,
+    telefon: document.getElementById('tel').value.trim() || '–',
+    nutzung: document.getElementById('nutzung').value || '–',
+    details: document.getElementById('details').value.trim() || '–',
+    instrumente,
+    teilnehmende: document.getElementById('teiln').value || '–',
+    wochentage: tage,
+    zeitfenster: document.getElementById('zeit').value || '–',
+    stunden_pro_woche: stunden,
+    start: document.getElementById('start').value || '–',
+    mietdauer: document.getElementById('dauer').value || '–',
+    budget_pro_stunde: document.getElementById('preis').value || '–',
+    bemerkungen: document.getElementById('bemerkung').value.trim() || '–',
+    _subject: `Raumanfrage: ${name}`
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/xdavwjqb', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      document.getElementById('success').style.display = 'block';
+      document.getElementById('success').scrollIntoView({ behavior: 'smooth' });
+      btn.style.display = 'none';
+      document.querySelector('.submit-note').style.display = 'none';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    alert('Es gab einen Fehler beim Senden. Bitte schreib uns direkt an ivan.schmid@me.com.');
+    btn.textContent = 'Anfrage absenden →';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
